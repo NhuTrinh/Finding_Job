@@ -73,7 +73,7 @@ export default class JobService {
         const job = await JobDao.findById(id);
         if (!job) throw new NotFoundError("Không tìm thấy công việc");
 
-        if(!job.recruiterId.equals(recruiterId)){
+        if (!job.recruiterId.equals(recruiterId)) {
             throw new ForbiddenError("Bạn không có quyền sửa công việc này");
         }
 
@@ -89,6 +89,6 @@ export default class JobService {
             throw new ForbiddenError("Bạn không có quyền xóa công việc này");
         }
 
-        await JobDao.updateById(id);
+        await JobDao.deleteById(id);
     }
 }

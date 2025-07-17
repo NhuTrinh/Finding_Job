@@ -9,6 +9,7 @@ import Header from "../../components/Header.js";
 import RecruiterService from "../../services/RecruiterService";
 import CompanyService from "../../services/CompanyService";
 import CompanyProfile from "./Company.js";
+import Job from "./Job.js"; 
 
 const EmployerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -117,14 +118,7 @@ const EmployerDashboard = () => {
             </>
           )}
 
-          {activeTab === "jobs" && (
-            <div className="card p-4">
-              <h4 className="mb-3">📋 Việc đã đăng</h4>
-              <ul>
-                {jobs.length ? jobs.map((job) => <li key={job._id}>{job.title}</li>) : <li>Chưa có việc nào</li>}
-              </ul>
-            </div>
-          )}
+          {activeTab === "jobs" && <Job />}
 
           {activeTab === "gallery" && (
             <>
