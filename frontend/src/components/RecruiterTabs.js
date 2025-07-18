@@ -2,7 +2,7 @@ import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const RecruiterTabs = ({ activeTab, onTabChange }) => {
-  const tabs = ['Info', 'Jobs', 'NewJob', 'Gallery'];
+  const tabs = ['Thông tin Công ty', 'Danh sách công việc', 'Danh sách ứng viên'];
 
   return (
     <ul className="nav nav-tabs mb-4">

@@ -9,7 +9,9 @@ import Header from "../../components/Header.js";
 import RecruiterService from "../../services/RecruiterService";
 import CompanyService from "../../services/CompanyService";
 import CompanyProfile from "./Company.js";
-import Job from "./Job.js"; 
+import ApplicationService from "../../services/ApplicationService";
+import Job from "./Job.js";
+import RecruiterApplicationList from "./RecruiterApplicationList.js";
 
 const EmployerDashboard = () => {
   const { user } = useContext(AuthContext);
@@ -18,6 +20,7 @@ const EmployerDashboard = () => {
   const [recruiter, setRecruiter] = useState(null);
   const [companies, setCompanies] = useState(null);
   const [profileInfo, setProfileInfo] = useState(null);
+  const [applicants, setApplicants] = useState([]);
 
 
   useEffect(() => {
@@ -56,7 +59,7 @@ const EmployerDashboard = () => {
                 companyCity: companyData.address?.city,
                 companyCountry: companyData.address?.country,
                 companyAbout: companyData.overview,
-                companyWebsite: companyData.websiteUrl, 
+                companyWebsite: companyData.websiteUrl,
                 companyFanpage: companyData.fanpageUrl,
                 companySize: companyData.size,
                 companyOvertime: companyData.Overtime,
@@ -81,9 +84,17 @@ const EmployerDashboard = () => {
     JobService.getJobsByRecruiterId(user.accessToken)
       .then((res) => setJobs(res.data.data))
       .catch((error) => console.error("Error fetching jobs:", error));
+    
+    // 5. Lấy danh sách ứng viên
+  ApplicationService.getApplicationsByRecruiter(user.accessToken)
+    .then((res) => {
+      console.log("✅ Applications:", res);
+      setApplicants(res.data.data); // nếu bạn muốn kiểm tra thì in thử res
+    })
+    .catch((err) => {
+      console.error("❌ Lỗi khi lấy ứng viên:", err);
+    });
   }, [user]);
-
-
 
   const imageList = [
     "https://picsum.photos/300/200?1",
@@ -105,7 +116,7 @@ const EmployerDashboard = () => {
         <div className="col-md-9 p-4">
           <RecruiterTabs activeTab={activeTab} onTabChange={setActiveTab} />
 
-          {activeTab === "info" && (
+          {activeTab === "thông tin công ty" && (
             <>
               <SidebarProfile recruiter={profileInfo} />
               <CompanyProfile
@@ -118,14 +129,19 @@ const EmployerDashboard = () => {
             </>
           )}
 
-          {activeTab === "jobs" && <Job />}
-
-          {activeTab === "gallery" && (
+          {activeTab === "danh sách công việc" && (
             <>
-              <JobGallery images={imageList} />
-              <ViewMoreButton onClick={() => alert("Load more images...")} />
+              <div className="d-flex justify-content-between align-items-center mb-3">
+                <h4>Danh sách công việc</h4>
+                <a href="/employer/jobs/create" className="btn btn-primary">
+                  + Tạo Job Mới
+                </a>
+              </div>
+              <Job />
             </>
           )}
+
+          {activeTab === 'danh sách ứng viên' && <RecruiterApplicationList />}
         </div>
       </div>
     </div>
