@@ -26,7 +26,7 @@ const EmployerDashboard = () => {
   useEffect(() => {
     if (!user?.accessToken) return;
 
-    // 1. Gọi recruiter trước
+
     RecruiterService.getProfile(user.accessToken)
       .then((response) => {
         const raw = response.data;
@@ -40,7 +40,7 @@ const EmployerDashboard = () => {
         console.log("✅ recruiterData from API:", recruiterData);
         setRecruiter(recruiterData);
 
-        // 2. Tiếp theo: Gọi company nếu có companyId
+
         if (recruiterData.companyId) {
           CompanyService.getCompanyById(recruiterData.companyId)
             .then((res) => {
@@ -48,7 +48,7 @@ const EmployerDashboard = () => {
               console.log("✅ Company data from API:", companyData);
               setCompanies(companyData);
 
-              // 3. Sau khi có cả recruiter + company → set profileInfo luôn tại đây
+
               setProfileInfo({
                 userName: recruiterData.fullName,
                 useremail: recruiterData.email,
@@ -84,16 +84,16 @@ const EmployerDashboard = () => {
     JobService.getJobsByRecruiterId(user.accessToken)
       .then((res) => setJobs(res.data.data))
       .catch((error) => console.error("Error fetching jobs:", error));
-    
+
     // 5. Lấy danh sách ứng viên
-  ApplicationService.getApplicationsByRecruiter(user.accessToken)
-    .then((res) => {
-      console.log("✅ Applications:", res);
-      setApplicants(res.data.data); // nếu bạn muốn kiểm tra thì in thử res
-    })
-    .catch((err) => {
-      console.error("❌ Lỗi khi lấy ứng viên:", err);
-    });
+    ApplicationService.getApplicationsByRecruiter(user.accessToken)
+      .then((res) => {
+        console.log("Applications:", res);
+        setApplicants(res.data.data);
+      })
+      .catch((err) => {
+        console.error(" Lỗi khi lấy ứng viên:", err);
+      });
   }, [user]);
 
   const imageList = [
@@ -107,44 +107,44 @@ const EmployerDashboard = () => {
   if (!profileInfo) return null;
 
   return (
-    <div className="container-fluid">
-      <Header />
-      <div className="row">
-        <div className="col-md-3 p-3">
-          <SidebarProfile profileInfo={profileInfo} />
-        </div>
-        <div className="col-md-9 p-4">
-          <RecruiterTabs activeTab={activeTab} onTabChange={setActiveTab} />
-
-          {activeTab === "thông tin công ty" && (
-            <>
-              <SidebarProfile recruiter={profileInfo} />
-              <CompanyProfile
-                companyInfo={profileInfo}
-                onUpdate={(updatedCompany) => {
-                  // TODO: Gọi API cập nhật công ty ở đây
-                  console.log("🔄 Cần cập nhật công ty:", updatedCompany);
-                }}
-              />
-            </>
-          )}
-
-          {activeTab === "danh sách công việc" && (
-            <>
-              <div className="d-flex justify-content-between align-items-center mb-3">
-                <h4>Danh sách công việc</h4>
-                <a href="/employer/jobs/create" className="btn btn-primary">
-                  + Tạo Job Mới
-                </a>
-              </div>
-              <Job />
-            </>
-          )}
-
-          {activeTab === 'danh sách ứng viên' && <RecruiterApplicationList />}
-        </div>
-      </div>
+<div className="container-fluid">
+  <Header />
+  <div className="row">
+    {/* Sidebar menu dọc bên trái */}
+    <div className="col-md-3 border-end pt-4">
+      <RecruiterTabs activeTab={activeTab} onTabChange={setActiveTab} vertical />
     </div>
+
+    {/* Nội dung hiển thị tab bên phải */}
+    <div className="col-md-9 p-4">
+      {activeTab === "thông tin công ty" && (
+        <>
+          <SidebarProfile recruiter={profileInfo} />
+          <CompanyProfile
+            companyInfo={profileInfo}
+            onUpdate={(updatedCompany) => {
+              console.log("🔄 Cần cập nhật công ty:", updatedCompany);
+            }}
+          />
+        </>
+      )}
+
+      {activeTab === "danh sách công việc" && (
+        <>
+          <div className="d-flex justify-content-between align-items-center mb-3">
+            <h4>Danh sách công việc</h4>
+            <a href="/employer/jobs/create" className="btn btn-primary">
+              + Tạo Job Mới
+            </a>
+          </div>
+          <Job />
+        </>
+      )}
+
+      {activeTab === 'danh sách ứng viên' && <RecruiterApplicationList />}
+    </div>
+  </div>
+</div>
   );
 };
 

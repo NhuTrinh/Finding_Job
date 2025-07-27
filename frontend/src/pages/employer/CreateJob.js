@@ -27,7 +27,6 @@ const CreateJob = () => {
     const handleChange = (e) => {
         const { name, value } = e.target;
 
-        // Handle nested address
         if (name.startsWith("address.")) {
             const field = name.split(".")[1];
             setFormData((prev) => ({

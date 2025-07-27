@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import RecruiterService from '../services/RecruiterService';
 import { AuthContext } from '../contexts/AuthContext'; // Để lấy token
@@ -10,6 +10,7 @@ const SidebarProfile = ({ profileInfo }) => {
   const [form, setForm] = useState({ ...profileInfo });
   const [originalForm, setOriginalForm] = useState({ ...profileInfo });
 
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -19,6 +20,9 @@ const SidebarProfile = ({ profileInfo }) => {
     setShowModal(true);
   };
 
+  console.log("SidebarProfile - profileInfo:", profileInfo);
+
+
   const handleSubmit = () => {
     if (!user?.accessToken) return;
 
@@ -26,6 +30,10 @@ const SidebarProfile = ({ profileInfo }) => {
       fullName: form.userName,
       email: form.useremail,
     };
+    if (!user?.accessToken) return;
+
+
+
 
     RecruiterService.updateProfile(user.accessToken, updatedProfile)
       .then(() => {
@@ -43,52 +51,58 @@ const SidebarProfile = ({ profileInfo }) => {
 
   return (
     <>
-      <div className="bg-light p-4 rounded shadow-sm">
+      <div className="p-4 rounded shadow-sm" style={{
+        fontFamily: "'Segoe UI', sans-serif",
+        backgroundColor: "#F9FAFB", // nền sáng nhẹ
+        border: "1px solid #E5E7EB",
+        color: "#111827",
+      }}>
         <div className="text-center">
           <img
             src={avatar}
             alt="Avatar"
             className="rounded-circle mb-3"
-            style={{ width: '80px', height: '80px', objectFit: 'cover' }}
+            style={{
+              width: '80px',
+              height: '80px',
+              objectFit: 'cover',
+              border: '3px solid white',
+            }}
           />
-          <h5 className="fw-bold">{profileInfo.userName}</h5>
+          <h5 className="fw-bold" style={{ fontFamily: "'Segoe UI', sans-serif" }}>{profileInfo.fullName}</h5>
           <button
-            className="btn btn-outline-primary w-100 mb-3"
+            variant="outline-success"
             onClick={() => {
               setOriginalForm({ ...form });
               setShowModal(true);
             }}
+            style={{
+              backgroundColor: "white",
+              color: "#06923E",
+              border: "1px solid #0b5e3cff",
+              borderRadius: "6px",
+              fontWeight: "500",
+            }}
           >
-            Câp nhật thông tin
+            Cập nhật thông tin
           </button>
         </div>
 
-        <ul className="list-group list-group-flush">
+        <ul className="list-group list-group-flush" >
           <li className="list-group-item">
-            <strong>Email:</strong> {profileInfo.useremail}
+            <strong>Tên:</strong> {profileInfo.fullName}
           </li>
           <li className="list-group-item">
-            <strong>Company:</strong> {profileInfo.companyName}
-          </li>
-          <li className="list-group-item">
-            <strong>Address:</strong> {profileInfo.companyLine}, {profileInfo.companyCity},{" "}
-            {profileInfo.companyCountry}
+            <strong>Email:</strong> {profileInfo.email}
           </li>
         </ul>
 
-        <div className="mt-3">
-          <h6>About</h6>
-          <p className="small text-muted">
-            {profileInfo.companyAbout ||
-              "Chưa có mô tả về công ty."}
-          </p>
-        </div>
       </div>
 
       {/* Modal */}
       <Modal show={showModal} onHide={() => setShowModal(false)}>
         <Modal.Header closeButton>
-          <Modal.Title>Cập nhật thông tin</Modal.Title>
+          <Modal.Title style={{ color: '#06923E' }}>Cập nhật thông tin</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -110,7 +124,7 @@ const SidebarProfile = ({ profileInfo }) => {
           }}>
             Hủy
           </Button>
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button variant="outline-success" onClick={handleSubmit}>
             Lưu
           </Button>
         </Modal.Footer>

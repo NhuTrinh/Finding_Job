@@ -1,22 +1,36 @@
-import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from "react";
+import classNames from "classnames";
 
 const RecruiterTabs = ({ activeTab, onTabChange }) => {
-  const tabs = ['Thông tin Công ty', 'Danh sách công việc', 'Danh sách ứng viên'];
+  const tabs = [
+    { id: "thông tin công ty", label: "🏢 Thông tin Công ty" },
+    { id: "danh sách công việc", label: "📄 Danh sách công việc" },
+    { id: "danh sách ứng viên", label: "👤 Danh sách ứng viên" },
+  ];
 
   return (
-    <ul className="nav nav-tabs mb-4">
+    <div className="nav flex-column nav-pills gap-2">
       {tabs.map((tab) => (
-        <li className="nav-item" key={tab}>
-          <button
-            className={`nav-link ${activeTab.toLowerCase() === tab.toLowerCase() ? 'active' : ''}`}
-            onClick={() => onTabChange(tab.toLowerCase())}
-          >
-            {tab}
-          </button>
-        </li>
+        <button
+          key={tab.id}
+          onClick={() => onTabChange(tab.id)}
+          className={`btn text-start ${
+            activeTab === tab.id
+              ? "btn-primary text-white"
+              : "btn-light text-dark"
+          }`}
+          style={{
+            borderRadius: "8px",
+            backgroundColor: activeTab === tab.id ? "#16C47F" : "#f8f9fa",
+            color: activeTab === tab.id ? "white" : "#212529",
+            border: "1px solid #dee2e6",
+            fontWeight: activeTab === tab.id ? "600" : "400",
+          }}
+        >
+          {tab.label}
+        </button>
       ))}
-    </ul>
+    </div>
   );
 };
 
