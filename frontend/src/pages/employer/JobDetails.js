@@ -44,97 +44,93 @@ const JobDetail = () => {
     if (!job) return <p>Đang tải thông tin công việc...</p>;
 
     return (
-        <Container className="my-5">
-            <Card className="p-4 shadow-lg rounded-4">
-                <Row>
-                    <Col md={8}>
-                        <h2 className="mb-3">{job.title}</h2>
-                        <p><strong>Hình thức:</strong> {job.employmentType}</p>
-                        <p><strong>Địa điểm:</strong> {job.address.line}, {job.address.city}, {job.address.country}</p>
-                        <p><strong>Ngày hết hạn:</strong> {getExpirationDateTwoMonthsLater(job.createdAt)}</p>
-
-                        <hr />
-
-                        <h5 className="mt-4">Mô tả công việc</h5>
-                        <p>{job.description}</p>
-
-                        <h5 className="mt-4">Yêu cầu ứng viên</h5>
-                        {(job.skills?.length || job.jobExpertise?.length || job.jobDomain?.length) ? (
-                            <>
-                                {job.skills?.length > 0 && (
-                                    <div>
-                                        <strong>Kỹ năng:</strong>
-                                        <ul>
-                                            {job.skills.map((skill, index) => (
-                                                <li key={index}>{skill}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {job.jobExpertise?.length > 0 && (
-                                    <div>
-                                        <strong>Chuyên môn:</strong>
-                                        <ul>
-                                            {job.jobExpertise.map((item, index) => (
-                                                <li key={index}>{item}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-
-                                {job.jobDomain?.length > 0 && (
-                                    <div>
-                                        <strong>Lĩnh vực:</strong>
-                                        <ul>
-                                            {job.jobDomain.map((item, index) => (
-                                                <li key={index}>{item}</li>
-                                            ))}
-                                        </ul>
-                                    </div>
-                                )}
-                            </>
-                        ) : (
-                            <p>Không có yêu cầu cụ thể</p>
-                        )}
-
-                        <h5 className="mt-4">Quyền lợi</h5>
-                        <p>{job.salaryMin} - {job.salaryMax} $</p>
-                    </Col>
-
-                    <Col md={4} className="border-start ps-4">
-                        <Card className="mb-3 p-3 text-center">
-                            <Card.Img variant="top" src={company} className="mb-3 rounded" />
-                            <h6>Về công ty</h6>
-                            <p>{job.company?.about || "Công ty chuyên về công nghệ, luôn đổi mới và sáng tạo."}</p>
-
-                            <h6 className="mt-3">Cơ hội phát triển</h6>
-                            <ul className="text-start small">
-                                <li>Môi trường năng động, sáng tạo</li>
-                                <li>Đào tạo chuyên sâu</li>
-                                <li>Phát triển kỹ năng leadership</li>
-                            </ul>
-                        </Card>
-                        <div className="d-flex justify-content-between mt-2">
-    <a
-        href={`/employer/jobs/${job._id}/edit`}
-        className="btn btn-warning"
-        target="_blank"
-        rel="noopener noreferrer"
+        <Container>
+    <Button
+        variant="link"
+        className="mb-3 ps-0 text-success fw-bold"
+        onClick={() => navigate('/employer/dashboard')}
     >
-        Cập nhật
-    </a>
-    <button
-        className="btn btn-danger"
-        onClick={() => handleDeleteJob(job._id)}
-    >
-        Xóa
-    </button>
-</div>
-                    </Col>
-                </Row>
-            </Card>
-        </Container>
+        ← Trở về Trang chủ
+    </Button>
+
+    <Card className="p-4 shadow-lg rounded-4">
+        <Row>
+            <Col md={8}>
+                <div className="mb-4 border-bottom pb-3">
+                    <h2 className="mb-3 text-success">{job.title}</h2>
+                    <p><strong>Hình thức:</strong> {job.employmentType}</p>
+                    <p><strong>Địa điểm:</strong> {job.address.line}, {job.address.city}, {job.address.country}</p>
+                    <p><strong>Ngày hết hạn:</strong> {getExpirationDateTwoMonthsLater(job.createdAt)}</p>
+                </div>
+
+                <div className="mb-4 border-bottom pb-3">
+                    <h5 className="mb-2 text-success" >📝 Mô tả công việc</h5>
+                    <p>{job.description}</p>
+                </div>
+
+                <div className="mb-4 border-bottom pb-3">
+                    <h5 className="mb-2 text-success">📌 Yêu cầu ứng viên</h5>
+                    {(job.skills?.length || job.jobExpertise?.length || job.jobDomain?.length) ? (
+                        <>
+                            {job.skills?.length > 0 && (
+                                <div>
+                                    <strong>Kỹ năng:</strong>
+                                    <ul>
+                                        {job.skills.map((skill, index) => (
+                                            <li key={index}>{skill}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                            {job.jobExpertise?.length > 0 && (
+                                <div>
+                                    <strong>Chuyên môn:</strong>
+                                    <ul>
+                                        {job.jobExpertise.map((item, index) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                            {job.jobDomain?.length > 0 && (
+                                <div>
+                                    <strong>Lĩnh vực:</strong>
+                                    <ul>
+                                        {job.jobDomain.map((item, index) => (
+                                            <li key={index}>{item}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        <p>Không có yêu cầu cụ thể</p>
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <h5 className="mb-2 text-success">💰 Quyền lợi</h5>
+                    <p>{job.salaryMin} - {job.salaryMax} $</p>
+                </div>
+            </Col>
+
+            <Col md={4} className="border-start ps-4">
+                <Card className="mb-3 p-3 text-center shadow-sm rounded-3 bg-light">
+                    <Card.Img variant="top" src={company} className="mb-3 rounded" />
+                    <h6 className="fw-bold">Về công ty</h6>
+                    <p>{job.company?.about || "Công ty chuyên về công nghệ, luôn đổi mới và sáng tạo."}</p>
+
+                    <h6 className="mt-3 fw-bold">🚀 Cơ hội phát triển</h6>
+                    <ul className="text-start small">
+                        <li>Môi trường năng động, sáng tạo</li>
+                        <li>Đào tạo chuyên sâu</li>
+                        <li>Phát triển kỹ năng leadership</li>
+                    </ul>
+                </Card>
+            </Col>
+        </Row>
+    </Card>
+</Container>
     );
 };
 

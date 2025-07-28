@@ -16,7 +16,7 @@ import RecruiterApplicationList from "./RecruiterApplicationList.js";
 const EmployerDashboard = () => {
   const { user } = useContext(AuthContext);
   const [jobs, setJobs] = useState([]);
-  const [activeTab, setActiveTab] = useState("info");
+  const [activeTab, setActiveTab] = useState("thông tin công ty");
   const [recruiter, setRecruiter] = useState(null);
   const [companies, setCompanies] = useState(null);
   const [profileInfo, setProfileInfo] = useState(null);
