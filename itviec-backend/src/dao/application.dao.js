@@ -12,9 +12,21 @@ class ApplicationDAO extends BaseDAO {
             .populate(options.populate || []);
     }      
 
-    async findMany(filter) {
+    /* async findMany(filter) {
         return Application.find(filter).populate('jobId').populate('candidateId');
-    }
+    } */
+    
+    async findMany(filter) {
+    return Application.find(filter)
+        .populate('jobId') // để lấy job title, etc.
+        .populate({
+            path: 'candidateId',
+            populate: {
+                path: 'accountId',
+                select: 'email fullName' // chỉ lấy field cần thiết
+            }
+        });
+}
 }
 
 export default new ApplicationDAO();

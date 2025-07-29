@@ -84,7 +84,7 @@ const attachmentSchema = new mongoose.Schema({
 const candidateSchema = new mongoose.Schema({
     accountId:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Account',
+        ref: 'accounts',
         required: true
     },
     profile: {

@@ -42,6 +42,8 @@ class CandidateService {
             throw new InvalidCredentialsError("Bạn cần đăng nhập");
         }
 
+        console.log("update account:", updatedAccount);
+
         // 2. Tìm hồ sơ ứng viên
         const candidate = await CandidateDAO.findProfileByAccountId(accountId);
         if (!candidate || !candidate.profile) {
@@ -51,6 +53,9 @@ class CandidateService {
         // 3. Gán thông tin profile mới
         Object.assign(candidate.profile, profileFields);
         await candidate.save();
+        
+
+        console.log("candidate profile:", candidate.profile);
 
         // 4. Trả về dữ liệu sau khi cập nhật
         return {
@@ -89,7 +94,7 @@ class CandidateService {
             phoneNumber: candidate.profile.phoneNumber,
             ...attachments
         };
-    }    
+    }
 
     static async updateAttachmentsByAccountId(accountId, newAttachments) {
         // 1. Kiểm tra tài khoản hợp lệ
@@ -107,7 +112,7 @@ class CandidateService {
         }
 
         // 3. Lấy ứng viên
-        const candidate = await CandidateDAO.findOne({accountId});
+        const candidate = await CandidateDAO.findOne({ accountId });
         if (!candidate || !candidate.profile) {
             throw new NotFoundError("Không tìm thấy ứng viên");
         }

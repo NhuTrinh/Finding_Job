@@ -10,6 +10,7 @@ import { AuthProvider } from './contexts/AuthContext';
 import JobDetail from './pages/employer/JobDetails';
 import EditJob from './pages/employer/EditJob';
 import CreateJob from "./pages/employer/CreateJob";
+import CandidateDetails from "./pages/employer/CandidateDetails";
 
 function App() {
   return (
@@ -42,7 +43,9 @@ function App() {
           <Route path="/employer/jobs/:id/edit" element={<EditJob />} />
           <Route path="/employer/jobs/:id" element={<JobDetail />} />
           <Route path="/employer/jobs/create" element={<CreateJob />} />
-
+          
+          <Route path="/candidate/:id" element={<CandidateDetails />} />
+          
 
           <Route path="*" element={<h2>404 Not Found</h2>} />
           <Route path="/unauthorized" element={<h2>Không có quyền truy cập</h2>} />
