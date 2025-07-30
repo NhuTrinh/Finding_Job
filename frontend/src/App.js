@@ -11,6 +11,7 @@ import JobDetail from './pages/employer/JobDetails';
 import EditJob from './pages/employer/EditJob';
 import CreateJob from "./pages/employer/CreateJob";
 import CandidateDetails from "./pages/employer/CandidateDetails";
+import CandidateProfile from './pages/candidate/CandidateProfile';
 
 function App() {
   return (
@@ -45,6 +46,8 @@ function App() {
           <Route path="/employer/jobs/create" element={<CreateJob />} />
           
           <Route path="/candidate/:id" element={<CandidateDetails />} />
+          <Route path="/candidate/profile/details" element={<CandidateProfile />} />
+
           
 
           <Route path="*" element={<h2>404 Not Found</h2>} />

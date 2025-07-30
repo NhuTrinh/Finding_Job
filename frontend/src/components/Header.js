@@ -61,19 +61,9 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0"></ul>
 
-          <form className="d-flex me-3 mt-2 mt-lg-0">
-            <input
-              className="form-control me-2"
-              type="search"
-              placeholder="Search jobs"
-              aria-label="Search"
-            />
-            <button className="btn btn-outline-success" type="submit">
-              Search
-            </button>
-          </form>
+          
 
-          <button className="btn btn-primary me-3 mt-2 mt-lg-0">Post Job</button>
+      
 
           {/* Avatar Dropdown - sử dụng React Bootstrap */}
           <Dropdown align="end" className="mt-2 mt-lg-0">

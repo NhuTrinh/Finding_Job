@@ -132,8 +132,8 @@ const EmployerDashboard = () => {
       {activeTab === "danh sách công việc" && (
         <>
           <div className="d-flex justify-content-between align-items-center mb-3">
-            <h4>Danh sách công việc</h4>
-            <a href="/employer/jobs/create" className="btn btn-primary">
+            <h4 className="text-success">Danh sách công việc</h4>
+            <a href="/employer/jobs/create" className="btn btn-success">
               + Tạo Job Mới
             </a>
           </div>

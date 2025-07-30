@@ -8,6 +8,8 @@ import { ReactComponent as EyeIcon } from '../../assets/icon/eye.svg';
 import { ReactComponent as EditIcon } from '../../assets/icon/pencil.svg';
 import { ReactComponent as TrashIcon } from '../../assets/icon/trash.svg';
 import { ReactComponent as PersonIcon } from '../../assets/icon/person.svg';
+import { ReactComponent as AcceptIcon } from '../../assets/icon/accept.svg';
+import { ReactComponent as DenyIcon } from '../../assets/icon/deny.svg';
 import { Table, Modal, Button } from "react-bootstrap";
 import ApplicationService from '../../services/ApplicationService';
 import { Link } from "react-router-dom";
@@ -21,6 +23,9 @@ const Job = () => {
     const [applications, setApplications] = useState([]);
     const [selectedJobId, setSelectedJobId] = useState(null);
     const [showApplicantsModal, setShowApplicantsModal] = useState(false);
+    const [showConfirmModalAcceptDeny, setShowConfirmModalAcceptDeny] = useState(false);
+    const [selectedAppId, setSelectedAppId] = useState(null);
+    const [actionType, setActionType] = useState(""); // "accept" hoặc "deny"
     const jobsPerPage = 5;
     const { id } = useParams();
     const navigate = useNavigate();
@@ -74,12 +79,44 @@ const Job = () => {
         }
     };
 
+    const confirmAction = (id, type) => {
+        setSelectedAppId(id);
+        setActionType(type); // "accept" hoặc "deny"
+        setShowConfirmModal(true);
+    };
+
+    const handleConfirmedAction = async () => {
+        try {
+            if (actionType === "accept") {
+                await ApplicationService.acceptApplication(selectedAppId, user.accessToken);
+                setApplications((prev) =>
+                    prev.map((app) =>
+                        app._id === selectedAppId ? { ...app, status: "accept" } : app
+                    )
+                );
+            } else if (actionType === "deny") {
+                await ApplicationService.rejectApplication(selectedAppId, user.accessToken);
+                setApplications((prev) =>
+                    prev.map((app) =>
+                        app._id === selectedAppId ? { ...app, status: "reject" } : app
+                    )
+                );
+            }
+        } catch (error) {
+            console.error("Lỗi khi xử lý yêu cầu:", error);
+        } finally {
+            setShowConfirmModal(false);
+            setSelectedAppId(null);
+            setActionType("");
+        }
+    };
+
     return (
         <div className="p-4">
             {jobs.length ? (
                 <>
                     <div className="table-responsive">
-                        <Table bordered hover className="align-middle text-center">
+                        <Table bordered hover className="align-middle text-center" >
                             <thead className="table-light" >
                                 <tr>
                                     <th></th>
@@ -151,6 +188,16 @@ const Job = () => {
                     </div>
 
                     {/*  Pagination */}
+                    <style>
+                        {`
+                .page-item.active .page-link {
+                    background-color: #06923E !important;
+                    border-color: #06923E !important;
+                    color: white !important;
+                }
+            `}
+                    </style>
+
                     <Pagination className="justify-content-center mt-3">
                         <Pagination.First onClick={() => setCurrentPage(1)} disabled={currentPage === 1} />
                         <Pagination.Prev onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))} disabled={currentPage === 1} />
@@ -184,59 +231,107 @@ const Job = () => {
                     <Button variant="danger" onClick={handleDelete}>Xóa</Button>
                 </Modal.Footer>
             </Modal>
+            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+                <Modal.Header closeButton>
+                    <Modal.Title className="text-success">Xác nhận</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    {actionType === "accept" ? (
+                        <>
+                            Bạn có chắc chắn muốn <strong style={{ color: '#06923E' }}>chấp nhận</strong> đơn ứng tuyển này?
+                        </>
+                    ) : (
+                        <>
+                            Bạn có chắc chắn muốn <strong style={{ color: '#dc3545' }}>từ chối</strong> đơn ứng tuyển này?
+                        </>
+                    )}
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>Hủy</Button>
+                    <Button variant={actionType === "accept" ? "success" : "danger"} onClick={handleConfirmedAction}>
+                        Xác nhận
+                    </Button>
+                </Modal.Footer>
+            </Modal>
             <Modal show={showApplicantsModal} onHide={() => setShowApplicantsModal(false)} size="lg" centered>
                 <Modal.Header closeButton>
-                    <Modal.Title>Danh sách ứng viên</Modal.Title>
+                    <Modal.Title className="text-success">Danh sách ứng viên</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
                     {applications.filter(app => app.jobId?._id === selectedJobId).length === 0 ? (
                         <p>Chưa có ứng viên nào ứng tuyển.</p>
                     ) : (
-                        <Table bordered hover className="text-center align-middle">
-                            <thead>
-                                <tr>
-                                    <th>STT</th>
-                                    <th>Họ tên</th>
-                                    <th>Email</th>
-                                    <th>Số điện thoại</th>
-                                    <th>Trạng thái</th>
-                                    <th>Thao tác</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {applications
-                                    .filter(app => app.jobId?._id === selectedJobId)
-                                    .map((app, index) => {
-                                        console.log("app:", app);
-                                        return (
-                                            <tr key={app._id}>
-                                                <td>{index + 1}</td>
-                                                <td>{app.candidateId?.accountId?.fullName || 'Chưa cập nhật'}</td>
-                                                <td>{app.candidateId?.accountId?.email || 'N/A'}</td>
-                                                <td>{app.candidateId?.profile?.phoneNumber || 'Chưa cập nhật'}</td>
-                                                <td>{app.status}</td>
-                                                <td className="text-center">
-                                                    {console.log("Candidate ID:", app.candidateId)}
-                                                    <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
-                                                        <Link
-                                                            to={`/candidate/${app.candidateId._id}`}
-                                                            onClick={() => localStorage.setItem("candidateData", JSON.stringify(app.candidateId))}
-                                                            state={{ candidate: app.candidateId }}
-                                                            target="_blank"
-                                                            title="Xem chi tiết"
-                                                            style={{ marginRight: '10px', cursor: 'pointer' }}
-                                                        >
-                                                            <EyeIcon style={{ width: '18px', height: '18px' }} />
-                                                        </Link>
+                        <div className="table-responsive">
+                            <Table bordered hover className="text-center align-middle">
+                                <thead>
+                                    <tr>
+                                        <th style={{ color: '#06923E' }}>STT</th>
+                                        <th style={{ color: '#06923E' }}>Họ tên</th>
+                                        <th style={{ color: '#06923E' }}>Email</th>
+                                        <th style={{ color: '#06923E' }}>Số điện thoại</th>
+                                        <th style={{ color: '#06923E' }}>Trạng thái</th>
+                                        <th style={{ color: '#06923E' }}>Thao tác</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {applications
+                                        .filter(app => app.jobId?._id === selectedJobId)
+                                        .map((app, index) => {
+                                            console.log("app:", app);
+                                            return (
+                                                <tr key={app._id}>
+                                                    <td>{index + 1}</td>
+                                                    <td>{app.candidateId?.accountId?.fullName || 'Chưa cập nhật'}</td>
+                                                    <td>{app.candidateId?.accountId?.email || 'N/A'}</td>
+                                                    <td>{app.candidateId?.profile?.phoneNumber || 'Chưa cập nhật'}</td>
+                                                    <td>{app.status}</td>
+                                                    <td className="text-center">
+                                                        {console.log("Candidate ID:", app.candidateId)}
+                                                        <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
+                                                            <Link
+                                                                to={`/candidate/${app.candidateId._id}`}
+                                                                onClick={() => localStorage.setItem("candidateData", JSON.stringify(app.candidateId))}
+                                                                state={{ candidate: app.candidateId }}
+                                                                target="_blank"
+                                                                title="Xem chi tiết"
+                                                                style={{ marginRight: '10px', cursor: 'pointer' }}
+                                                            >
+                                                                <EyeIcon style={{ width: '18px', height: '18px' }} />
+                                                            </Link>
+                                                            <button
+                                                                onClick={() => confirmAction(app._id, "accept")}
+                                                                title="Chấp nhận"
+                                                                style={{
+                                                                    background: 'none',
+                                                                    border: 'none',
+                                                                    padding: 0,
+                                                                    cursor: 'pointer',
+                                                                }}
+                                                            >
+                                                                <AcceptIcon style={{ width: '18px', height: '18px' }} />
+                                                            </button>
+                                                            <button
+                                                                onClick={() => confirmAction(app._id, "deny")}
+                                                                title="Từ chối"
+                                                                style={{
+                                                                    background: 'none',
+                                                                    border: 'none',
+                                                                    padding: 0,
+                                                                    cursor: 'pointer',
+                                                                }}
+                                                            >
+                                                                <DenyIcon style={{ width: '18px', height: '18px' }} />
+                                                            </button>
 
 
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        );
-                                    })}
-                            </tbody>
-                        </Table>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            );
+                                        })}
+                                </tbody>
+                            </Table>
+                        </div>
                     )}
                 </Modal.Body>
                 <Modal.Footer>
