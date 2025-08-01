@@ -23,6 +23,9 @@ import Header from "./components/Header";
 import CandidateCompanies from "./pages/candidate/Companies";
 import CandidateCompanyDetail from "./pages/candidate/CompanyDetail";
 
+
+
+
 function App() {
   return (
     <AuthProvider>
