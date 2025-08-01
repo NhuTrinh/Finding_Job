@@ -28,6 +28,7 @@ jobSchema.index({
     jobTitle: 'text',
     skills: 'text',
 })
+
 jobSchema.index({ 'address.city': 1 });
 
 const Job = mongoose.model('Job', jobSchema);
