@@ -35,6 +35,10 @@ export const AuthProvider = ({ children }) => {
             if (error.response && error.response.status === 401) {
                 throw new Error(error.response.data.message || 'Đăng nhập thất bại');
             }
+
+            if (error.response && error.response.status === 500) {
+                throw new Error(error.response.data.message || 'Đăng nhập thất bại');
+            }
             throw new Error(error.response?.data?.message || 'Đăng ký thất bại');
         }
     };

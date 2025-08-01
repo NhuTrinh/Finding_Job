@@ -1,0 +1,45 @@
+body {
+  background: linear-gradient(to bottom, #FFFBDE, #91C8E4);
+  font-family: "Segoe UI", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Navbar Gradient */
+.navbar {
+  background: linear-gradient(90deg, #4682A9, #749BC2) !important;
+}
+
+.navbar .nav-link,
+.navbar .navbar-brand {
+  color: #FFFBDE !important;
+}
+
+.navbar .nav-link:hover {
+  color: #91C8E4 !important;
+}
+
+/* Gradient Buttons */
+.btn-custom {
+  background: linear-gradient(90deg, #749BC2, #4682A9);
+  color: #FFFBDE;
+  border: none;
+  transition: 0.3s;
+}
+
+.btn-custom:hover {
+  background: linear-gradient(90deg, #4682A9, #749BC2);
+}
+
+/* Card Styling */
+.card {
+  border: 1px solid #91C8E4;
+  background-color: #ffffff;
+}
+
+/* Gradient Text */
+.text-primary-custom {
+  background: linear-gradient(90deg, #4682A9, #749BC2);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
