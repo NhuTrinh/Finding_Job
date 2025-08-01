@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 function SearchBar({ onSearch }) {
-  const [searchType, setSearchType] = useState("jobs");
+  const [searchType, setSearchType] = useState("công việc");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,18 +16,18 @@ function SearchBar({ onSearch }) {
         value={searchType}
         onChange={(e) => setSearchType(e.target.value)}
       >
-        <option value="jobs">Jobs</option>
-        <option value="companies">Companies</option>
-        <option value="location">Location</option>
+        <option value="công việc">Công việc</option>
+        <option value="công ty">Công ty</option>
+        <option value="vị trí">Vị trí</option>
       </select>
       <input
         type="text"
         name="search"
-        placeholder={`Search by ${searchType}...`}
+        placeholder={`Tìm kiếm theo ${searchType}...`}
         className="form-control w-50 me-2"
       />
       <button type="submit" className="btn btn-primary">
-        Search
+        Tìm kiếm
       </button>
     </form>
   );
