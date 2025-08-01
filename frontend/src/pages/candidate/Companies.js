@@ -26,8 +26,8 @@ function Companies() {
   const handleSearchCompanies = async (query, type) => {
   try {
     let url = "/companies";
-    if (type === "companies") url = `/companies?search=${query}`;
-    if (type === "location") url = `/companies?location=${query}`;
+    if (type === "Công Ty") url = `/companies?search=${query}`;
+    if (type === "Vị Trí") url = `/companies?location=${query}`;
     const res = await api.get(url);
     setCompanies(res.data.data || []);
   } catch (err) {
@@ -60,7 +60,7 @@ function Companies() {
                     👥 {company.size ? `${company.size} employees` : "Size: N/A"}
                   </p>
                   <p className="small">
-                    {company.description || "No description available."}
+                    {company.description || "Chưa có mô tả công ty ."}
                   </p>
                   <Link
                     to={`/candidate/companies/${company._id}`}

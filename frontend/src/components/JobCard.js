@@ -1,4 +1,12 @@
+import { useNavigate } from "react-router-dom";
+
 function JobCard({ job }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/jobs/${job._id}`);
+  };
+
   return (
     <div className="col-md-4 mb-4">
       <div className="card shadow-sm h-100">
@@ -12,7 +20,12 @@ function JobCard({ job }) {
           <p className="fw-bold text-dark">
             💰 {job.salaryMin || 0} - {job.salaryMax || 0} USD
           </p>
-          <button className="btn btn-custom w-100">Apply Now</button>
+          <button
+            onClick={() => navigate(`/jobs/${job._id}`)}
+            className="btn btn-danger w-100 mt-2"
+          >
+            Ứng tuyển
+          </button>
         </div>
       </div>
     </div>

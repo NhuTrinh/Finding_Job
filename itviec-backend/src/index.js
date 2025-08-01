@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 5000;
 
 mongoose.connect(process.env.ITVIEC_DB_URI)
 .then(() => {
