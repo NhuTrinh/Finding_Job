@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import api from "../../api";
 import { Link } from "react-router-dom";
+import api from "../../api";
 import SearchBar from "../../components/SearchBar";
 
 function Companies() {
@@ -40,7 +40,7 @@ function Companies() {
 
   return (
     <div className="container my-4">
-      <h2 className="mb-4 text-center">Companies</h2>
+      <h2 className="mb-4 text-center">Công Ty</h2>
       <SearchBar placeholder="Search companies..." onSearch={handleSearchCompanies} />
       {companies.length > 0 ? (
         <div className="row">

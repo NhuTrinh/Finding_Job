@@ -37,7 +37,7 @@ function Home() {
 
   return (
     <div className="container my-5">
-      <h2 className="fw-bold mb-4 text-primary-custom text-center">Latest Jobs</h2>
+      <h2 className="fw-bold mb-4 text-primary-custom text-center">Các công việc mới nhất</h2>
       <SearchBar placeholder="Search jobs (e.g., React, Java)..." onSearch={handleSearchJobs} />
       {loading ? (
         <p>Loading jobs...</p>

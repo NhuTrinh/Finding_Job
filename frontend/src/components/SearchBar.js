@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 function SearchBar({ onSearch }) {
-  const [searchType, setSearchType] = useState("công việc");
+  const [searchType, setSearchType] = useState("jobs");
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -16,9 +16,9 @@ function SearchBar({ onSearch }) {
         value={searchType}
         onChange={(e) => setSearchType(e.target.value)}
       >
-        <option value="công việc">Công việc</option>
-        <option value="công ty">Công ty</option>
-        <option value="vị trí">Vị trí</option>
+        <option value="jobs">Công việc</option>
+        <option value="companies">Công ty</option>
+        <option value="location">Vị trí</option>
       </select>
       <input
         type="text"
