@@ -29,6 +29,7 @@ const Job = () => {
     const jobsPerPage = 5;
     const { id } = useParams();
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         if (!user?.accessToken) return;
@@ -110,6 +111,7 @@ const Job = () => {
             setActionType("");
         }
     };
+    
 
     return (
         <div className="p-4">

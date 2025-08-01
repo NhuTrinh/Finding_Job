@@ -18,7 +18,7 @@ function Login() {
       console.log("🔑 Login response:", res.data);
 
       // Lưu token
-      localStorage.setItem("token", res.data.token);
+      localStorage.setItem("accessToken", res.data.token);
 
       // 2️⃣ Gọi API profile để lấy fullName
       const profileRes = await api.get("/candidates/profile-cv");
