@@ -22,7 +22,7 @@ def verify_password(plain: str, hashed: str) -> bool:
     return pwd_context.verify(plain, hashed)
 
 
-def create_access_token(user_id: int, role: str) -> str:
+def create_access_token(user_id: str, role: str) -> str:
     expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     payload = {
         "sub": str(user_id),
@@ -42,14 +42,12 @@ def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(securit
         role = payload.get("role")
 
         if not sub or not role:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token")
+            raise HTTPException(
+                status_code=status.HTTP_401_UNAUTHORIZED,
+                detail="Invalid token"
+            )
 
-        try:
-            user_id = int(sub)
-        except ValueError:
-            raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail="Invalid token subject")
-
-        return {"user_id": user_id, "role": role}
+        return {"user_id": str(sub), "role": role}
 
     except JWTError:
         raise HTTPException(

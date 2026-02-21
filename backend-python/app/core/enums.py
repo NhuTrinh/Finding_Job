@@ -14,4 +14,7 @@ class Permission(str, Enum):
     UPDATE_JOB = "update_job"
     DELETE_JOB = "delete_job"
     APPLY_JOB = "apply_job"
+    UPDATE_COMPANY = "update_company"
+    VIEW_COMPANY = "view_company"
+    
     
