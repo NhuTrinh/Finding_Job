@@ -5,6 +5,7 @@ class UserRole(str, Enum):
     ADMIN = "admin"
     RECRUITER = "recruiter"
     CANDIDATE = "candidate"
+    GUEST = "guest"
 
 class Permission(str, Enum):
     MANAGE_USERS = "manage_users"
@@ -13,4 +14,5 @@ class Permission(str, Enum):
     UPDATE_JOB = "update_job"
     DELETE_JOB = "delete_job"
     APPLY_JOB = "apply_job"
-    
+    UPDATE_COMPANY = "update_company"
+    VIEW_COMPANY = "view_company"
