@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "name": "Công ty Công nghệ ABC",
+        "logo": "",
+        "type": "Cổ phần",
+        "industry": "Công nghệ thông tin",
+        "size": "52-250 nhân viên",
+        "address": {
+            "line": "123 Đường Láng",
+            "city": "Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "workingDays": "Thứ 2 - Thứ 6",
+        "Overtime": "Không yêu cầu làm thêm",
+        "overview": "Công ty tiên phong về AI và giải pháp phần mềm.",
+        "keySkills": [
+            "React",
+            "Node.js",
+            "MongoDB"
+        ],
+        "perksContent": "Phúc lợi tốt, môi trường thân thiện, lương thưởng cạnh tranh",
+        "fanpageUrl": "https://facebook.com/congtyabc",
+        "websiteUrl": "https://abc-tech.vn"
+    },
+    {
+        "id": 2,
+        "name": "Công ty Phần mềm Sao Bắc",
+        "logo": "https://example.com/logo-saobac.png",
+        "type": "TNHH",
+        "industry": "Gia công phần mềm",
+        "size": "11-50 nhân viên",
+        "address": {
+            "line": "45 Nguyễn Văn Linh",
+            "city": "Đà Nẵng",
+            "country": "Việt Nam"
+        },
+        "workingDays": "Thứ 2 - Thứ 6",
+        "Overtime": "Có hỗ trợ OT khi cần",
+        "overview": "Chuyên phát triển hệ thống web và mobile cho khách hàng quốc tế.",
+        "keySkills": [
+            "Python",
+            "Django",
+            "PostgreSQL"
+        ],
+        "perksContent": "Thưởng dự án, làm việc hybrid, đào tạo kỹ năng",
+        "fanpageUrl": "https://facebook.com/saobacsoft",
+        "websiteUrl": "https://saobacsoft.vn"
+    },
+    {
+        "id": 3,
+        "name": "Công ty Giải pháp Số NextGen",
+        "logo": "https://example.com/logo-nextgen.png",
+        "type": "Cổ phần",
+        "industry": "Chuyển đổi số",
+        "size": "201-500 nhân viên",
+        "address": {
+            "line": "88 Điện Biên Phủ",
+            "city": "TP. Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "workingDays": "Thứ 2 - Thứ 6",
+        "Overtime": "OT theo dự án",
+        "overview": "Cung cấp giải pháp chuyển đổi số cho doanh nghiệp vừa và lớn.",
+        "keySkills": [
+            "Java",
+            "Spring Boot",
+            "AWS"
+        ],
+        "perksContent": "Bảo hiểm đầy đủ, du lịch hàng năm, thưởng KPI",
+        "fanpageUrl": "https://facebook.com/nextgen.digital",
+        "websiteUrl": "https://nextgen.vn"
+    },
+    {
+        "id": 4,
+        "name": "Công ty Thương mại Điện tử Lotus",
+        "logo": "https://example.com/logo-lotus.png",
+        "type": "TNHH",
+        "industry": "Thương mại điện tử",
+        "size": "51-200 nhân viên",
+        "address": {
+            "line": "210 Lê Văn Việt",
+            "city": "TP. Thủ Đức",
+            "country": "Việt Nam"
+        },
+        "workingDays": "Thứ 2 - Thứ 7",
+        "Overtime": "Không bắt buộc",
+        "overview": "Nền tảng thương mại điện tử tập trung vào thị trường Đông Nam Á.",
+        "keySkills": [
+            "Vue.js",
+            "Laravel",
+            "MySQL"
+        ],
+        "perksContent": "Làm việc linh hoạt, thưởng doanh thu, môi trường năng động",
+        "fanpageUrl": "https://facebook.com/lotus.ecommerce",
+        "websiteUrl": "https://lotus.vn"
+    },
+    {
+        "id": 5,
+        "name": "Công ty Dữ liệu & AI Horizon",
+        "logo": "https://example.com/logo-horizon.png",
+        "type": "Cổ phần",
+        "industry": "Trí tuệ nhân tạo",
+        "size": "11-50 nhân viên",
+        "address": {
+            "line": "12 Trần Não",
+            "city": "TP. Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "workingDays": "Thứ 2 - Thứ 6",
+        "Overtime": "Không yêu cầu làm thêm",
+        "overview": "Startup tập trung vào phân tích dữ liệu và giải pháp AI cho doanh nghiệp.",
+        "keySkills": [
+            "Python",
+            "Machine Learning",
+            "Docker"
+        ],
+        "perksContent": "Stock option, làm việc từ xa, giờ giấc linh hoạt",
+        "fanpageUrl": "https://facebook.com/horizon.ai",
+        "websiteUrl": "https://horizon-ai.vn"
+    }
+]

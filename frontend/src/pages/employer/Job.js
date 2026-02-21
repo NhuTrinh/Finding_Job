@@ -18,7 +18,8 @@ const Job = () => {
     const { user } = useContext(AuthContext);
     const [jobs, setJobs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [showConfirmModal, setShowConfirmModal] = useState(false);
+ const [showDeleteModal, setShowDeleteModal] = useState(false);
+const [showActionModal, setShowActionModal] = useState(false);
     const [jobToDelete, setJobToDelete] = useState(null);
     const [applications, setApplications] = useState([]);
     const [selectedJobId, setSelectedJobId] = useState(null);
@@ -65,7 +66,7 @@ const Job = () => {
 
     const confirmDelete = (jobId) => {
         setJobToDelete(jobId);
-        setShowConfirmModal(true);
+        setShowDeleteModal(true);
     };
 
     const handleDelete = async (jobId) => {
@@ -75,7 +76,7 @@ const Job = () => {
         } catch (err) {
             console.error("Lỗi khi xóa job:", err);
         } finally {
-            setShowConfirmModal(false);
+            setShowDeleteModal(false);
             setJobToDelete(null);
         }
     };
@@ -83,7 +84,7 @@ const Job = () => {
     const confirmAction = (id, type) => {
         setSelectedAppId(id);
         setActionType(type); // "accept" hoặc "deny"
-        setShowConfirmModal(true);
+        setShowActionModal(true);
     };
 
     const handleConfirmedAction = async () => {
@@ -106,7 +107,7 @@ const Job = () => {
         } catch (error) {
             console.error("Lỗi khi xử lý yêu cầu:", error);
         } finally {
-            setShowConfirmModal(false);
+            setShowActionModal(false);
             setSelectedAppId(null);
             setActionType("");
         }
@@ -221,7 +222,7 @@ const Job = () => {
             ) : (
                 <p>Chưa có việc nào</p>
             )}
-            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Xác nhận xóa</Modal.Title>
                 </Modal.Header>
@@ -229,11 +230,11 @@ const Job = () => {
                     Bạn có chắc chắn muốn xóa công việc này không?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>Hủy</Button>
+                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Hủy</Button>
                     <Button variant="danger" onClick={handleDelete}>Xóa</Button>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
+            <Modal show={showActionModal} onHide={() => setShowActionModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title className="text-success">Xác nhận</Modal.Title>
                 </Modal.Header>
@@ -249,7 +250,7 @@ const Job = () => {
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>Hủy</Button>
+                    <Button variant="secondary" onClick={() => setShowActionModal(false)}>Hủy</Button>
                     <Button variant={actionType === "accept" ? "success" : "danger"} onClick={handleConfirmedAction}>
                         Xác nhận
                     </Button>

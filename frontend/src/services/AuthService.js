@@ -6,14 +6,14 @@ class AuthService {
                 ? "/accounts/candidate/login"
                 : "/accounts/recruiter/login";
 
-        return axios.post(`http://localhost:80/api/v1${endpoint}`, {
+        return axios.post(`http://127.0.0.1:8000/api/v1${endpoint}`, {
             email,
             password,
         });
     }
 
     register({ fullName, email, password, company }) {
-        return axios.post("http://localhost:80/api/v1/accounts/recruiter/register", {
+        return axios.post("http://127.0.0.1:8000/api/v1/accounts/recruiter/register", {
             fullName,
             email,
             password,

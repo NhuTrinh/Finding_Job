@@ -3,7 +3,7 @@ import axios from "axios";
 class ApplicationService {
   // Lấy danh sách đơn ứng tuyển theo recruiter (dành cho nhà tuyển dụng)
   getApplicationsByRecruiter(token) {
-    return axios.get("http://localhost:80/api/v1/applications/recruiter", {
+    return axios.get("http://127.0.0.1:8000/api/v1/applications/recruiter", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -12,7 +12,7 @@ class ApplicationService {
 
   acceptApplication(id, token) {
     return axios.patch(
-      `http://localhost:80/api/v1/applications/${id}/accept`,
+      `http://127.0.0.1:8000/api/v1/applications/${id}/accept`,
       {},
       {
         headers: {
@@ -24,7 +24,7 @@ class ApplicationService {
 
   rejectApplication(id, token) {
     return axios.patch(
-      `http://localhost:80/api/v1/applications/${id}/reject`,
+      `http://127.0.0.1:8000/api/v1/applications/${id}/reject`,
       {},
       {
         headers: {

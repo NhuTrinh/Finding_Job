@@ -2,7 +2,7 @@ import axios from "axios";
 
 class JobService {
     getJobsByRecruiterId(token) {
-        return axios.get("http://localhost:80/api/v1/jobs/recruiter", {
+        return axios.get("http://127.0.0.1:8000/api/v1/jobs/recruiter", {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -10,7 +10,7 @@ class JobService {
     }
 
     createJob(data, token) {
-        return axios.post("http://localhost:80/api/v1/jobs", data, {
+        return axios.post("http://127.0.0.1:8000/api/v1/jobs", data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -18,7 +18,7 @@ class JobService {
     }
 
     updateJob(id, data, token) {
-        return axios.put(`http://localhost:80/api/v1/jobs/${id}`, data, {
+        return axios.put(`http://127.0.0.1:8000/api/v1/jobs/${id}`, data, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -26,7 +26,7 @@ class JobService {
     }
 
     deleteJob(id, token) {
-        return axios.delete(`http://localhost:80/api/v1/jobs/${id}`, {
+        return axios.delete(`http://127.0.0.1:8000/api/v1/jobs/${id}`, {
             headers: {
                 Authorization: `Bearer ${token}`,
             },
@@ -34,7 +34,7 @@ class JobService {
     }
 
     getJobById(id) {
-        return axios.get(`http://localhost:80/api/v1/jobs/${id}`);
+        return axios.get(`http://127.0.0.1:8000/api/v1/jobs/${id}`);
     }
 
     getJobs({ search = "", city = "", page = 0, jobsPerPage = 20 }) {
@@ -45,7 +45,7 @@ class JobService {
         params.append("page", page);
         params.append("jobsPerPage", jobsPerPage);
 
-        return axios.get(`http://localhost:80/api/v1/jobs?${params.toString()}`);
+        return axios.get(`http://127.0.0.1:8000/api/v1/jobs?${params.toString()}`);
     }
 }
 export default new JobService();

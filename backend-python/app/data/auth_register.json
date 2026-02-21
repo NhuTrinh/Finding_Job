@@ -1,0 +1,31 @@
+[
+    {
+        "fullName": "Nguyễn Văn E",
+        "email": "recruiter9@example.com",
+        "password": "$2b$12$uLQoV1On62HW1.GdVvvVueR2/oSEPZN71vgQ9e3jvaTE.5dBo78lS",
+        "company": {
+            "name": "ABC",
+            "address": {
+                "line": "123 Đường Lê Lợi",
+                "city": "Hà Nội",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "d23e49fd-1ac0-462a-8070-63531dd058ba"
+    },
+    {
+        "fullName": "Nguyen Van A",
+        "email": "recruiter10@example.com",
+        "password": "$2b$12$elHGgrImVFKTqPlYW9bNEOM/LZWbaq8VQVAFKlVW..rwvLy6JLUgq",
+        "company": {
+            "id": 1,
+            "name": "ABC",
+            "address": {
+                "line": "123 Đường Lê Lợi",
+                "city": "Hà Nội",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "1f77791f-73c4-4067-b745-eee8f5d79bb8"
+    }
+]

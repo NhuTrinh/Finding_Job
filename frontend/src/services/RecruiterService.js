@@ -3,7 +3,7 @@ import axios from 'axios';
 class RecruiterService {
   // Lấy profile của recruiter hiện tại (dựa vào token backend xác định accountId)
   getProfile(token) {
-    return axios.get("http://localhost:80/api/v1/recruiters/profile", {
+    return axios.get("http://127.0.0.1:8000/api/v1/recruiters/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },
@@ -12,7 +12,7 @@ class RecruiterService {
 
   // Cập nhật profile recruiter
   updateProfile(token, profileData) {
-    return axios.put("http://localhost:80/api/v1/recruiters/profile", profileData, {
+    return axios.put("http://127.0.0.1:8000/api/v1/recruiters/profile", profileData, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

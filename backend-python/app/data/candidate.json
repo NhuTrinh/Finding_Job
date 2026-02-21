@@ -1,0 +1,14 @@
+[
+    {
+        "id": "69973ba827338819eb9e630c",
+        "fullName": "Ứng Viên G",
+        "email": "ungvieng@example.com",
+        "role": "candidate"
+    },
+    {
+        "id": "69973ba827338819eb9e630d",
+        "fullName": "Ứng Viên H",
+        "email": "ungvienh@example.com",
+        "role": "candidate"
+    }
+]
