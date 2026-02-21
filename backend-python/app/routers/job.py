@@ -1,31 +1,66 @@
 from fastapi import APIRouter, Depends
-from fastapi.security import HTTPAuthorizationCredentials
-from app.schemas.Job import CreateJob 
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from app.services.job import create_job, get_details_job_by_id, get_job_of_recruiter, update_job_by_id, delete_job_by_id
+from app.schemas.Job import CreateJob
 
-security = HTTPBearer()
+from app.core.security import get_current_user
+from app.core.dependencies import require_permission
+from app.core.enums import Permission
 
-router  = APIRouter(prefix="/api/v1/jobs", tags=["Job"])
+from app.services import job as job_service
 
-@router.post("", summary="Tạo job mới", description="Tạo một job mới")
-def create_new_job(job: CreateJob, credentials: HTTPAuthorizationCredentials = Depends(security)):
-    return create_job(job, credentials)
+router = APIRouter(prefix="/api/v1/jobs", tags=["Job"])
 
-@router.get("/recruiter", summary="Lấy danh sách job của nhà tuyển dụng", description="Lấy danh sách job của nhà tuyển dụng")
-def get_jobs_recruiter(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    return get_job_of_recruiter(credentials)
 
-@router.put("/{id}", summary="Cập nhật thông tin job", description="Cập nhật thông tin job")
-def update_job(job: CreateJob, id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
-    return update_job_by_id(id, job, credentials)
+# ===== PUBLIC (cho khách) =====
 
-@router.get("/{id}", summary="Lấy thông tin chi tiết của một job", description="Lấy thông tin chi tiết của một job dựa trên ID")
+@router.get(
+    "/{id}",
+    summary="Lấy thông tin chi tiết của một job (Public)",
+    description="Guest không đăng nhập vẫn xem được job theo ID"
+)
 def get_job_details(id: str):
-    return get_details_job_by_id(id)
+    return job_service.get_details_job_by_id(id)
 
 
-@router.delete("/{id}", summary="Xoá một job", description="Xoá một job dựa trên ID")
-def delete_job(id: str, credentials: HTTPAuthorizationCredentials = Depends(security)):
-    return delete_job_by_id(id, credentials)
 
+
+
+# ===== PROTECTED (cần login + RBAC) =====
+
+@router.post(
+    "",
+    summary="Tạo job mới",
+    description="Tạo một job mới",
+    dependencies=[Depends(require_permission(Permission.CREATE_JOB))]
+)
+def create_new_job(job: CreateJob, current_user=Depends(get_current_user)):
+    return job_service.create_job(job, recruiter_id=current_user["user_id"])
+
+
+@router.get(
+    "/recruiter",
+    summary="Lấy danh sách job của nhà tuyển dụng",
+    description="Chỉ recruiter/admin xem job của chính mình",
+    dependencies=[Depends(require_permission(Permission.VIEW_JOB))]
+)
+def get_jobs_recruiter(current_user=Depends(get_current_user)):
+    return job_service.get_job_of_recruiter(recruiter_id=current_user["user_id"])
+
+
+@router.put(
+    "/{id}",
+    summary="Cập nhật thông tin job",
+    description="Cập nhật thông tin job",
+    dependencies=[Depends(require_permission(Permission.UPDATE_JOB))]
+)
+def update_job(id: str, job: CreateJob, current_user=Depends(get_current_user)):
+    return job_service.update_job_by_id(id, job, recruiter_id=current_user["user_id"])
+
+
+@router.delete(
+    "/{id}",
+    summary="Xoá một job",
+    description="Xoá một job dựa trên ID",
+    dependencies=[Depends(require_permission(Permission.DELETE_JOB))]
+)
+def delete_job(id: str, current_user=Depends(get_current_user)):
+    return job_service.delete_job_by_id(id, recruiter_id=current_user["user_id"])
