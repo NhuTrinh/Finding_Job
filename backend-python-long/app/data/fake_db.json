@@ -1,0 +1,13 @@
+{
+    "users": [
+        {
+            "id": "u1",
+            "name": "test1",
+            "email": "test1@gmail.com",
+            "password": "123456",
+            "role": "test"
+        }
+    ],
+    "jobs": [],
+    "applications": []
+}
