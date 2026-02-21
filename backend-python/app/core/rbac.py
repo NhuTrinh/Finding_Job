@@ -19,4 +19,8 @@ ROLE_PERMISSIONS = {
         Permission.VIEW_JOB,
         Permission.APPLY_JOB
     },
+    UserRole.GUEST: {
+        Permission.VIEW_JOB
+        #Permission.VIEW_COMPANY
+    }
 }
