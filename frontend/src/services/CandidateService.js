@@ -1,22 +1,14 @@
-import axios from 'axios';
+import api from "../api";
 
 class CandidateService {
-  // Lấy profile của recruiter hiện tại (dựa vào token backend xác định accountId)
-  getProfile(token) {
-    return axios.get("http://127.0.0.1:8000/api/v1/candidates/profile-cv", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  getProfile() {
+    // GET /api/v1/candidates/me
+    return api.get("/candidates/me");
   }
 
-  // Cập nhật profile recruiter
-  updateProfile(token, profileData) {
-    return axios.put("http://127.0.0.1:8000/api/v1/recruiters/profile", profileData, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    });
+  updateProfile(profileData) {
+    // PUT /api/v1/candidates/me
+    return api.put("/candidates/me", profileData);
   }
 }
 

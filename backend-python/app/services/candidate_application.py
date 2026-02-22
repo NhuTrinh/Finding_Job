@@ -13,8 +13,11 @@ class CandidateApplicationService:
     def apply(self, current_user: dict, job_id: str):
         candidate_id = current_user["user_id"]
         if not self.repo.job_exists(job_id):
-            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Job not found")
-        return {"status": "success", "data": self.repo.create(candidate_id, job_id)}
+            raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Không tìm thấy công việc")
+        created = self.repo.create(candidate_id, job_id)
+        if isinstance(created, dict) and created.get("error") == "duplicate":
+            raise HTTPException(status_code=status.HTTP_409_CONFLICT, detail="Bạn đã ứng tuyển công việc này rồi")
+        return {"status": "success", "data": created}
 
     def my_applications(self, current_user: dict):
         candidate_id = current_user["user_id"]
@@ -26,8 +29,8 @@ class CandidateApplicationService:
 
         if not result["ok"]:
             if result["reason"] == "not_found":
-                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Application not found")
+                raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Không tìm thấy đơn ứng tuyển")
             if result["reason"] == "forbidden":
-                raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Not allowed to withdraw this application")
+                raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Bạn không có quyền rút đơn ứng tuyển này")
 
         return {"status": "success", "data": result["data"]}

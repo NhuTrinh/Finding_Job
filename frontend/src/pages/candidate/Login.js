@@ -21,11 +21,11 @@ function Login() {
       localStorage.setItem("accessToken", res.data.token);
 
       // 2️⃣ Gọi API profile để lấy fullName
-      const profileRes = await api.get("/candidates/profile-cv");
+      const profileRes = await api.get("/candidates/me");
       console.log("👤 Profile response:", profileRes.data);
 
       // ✅ Lấy trực tiếp fullName từ root object
-      localStorage.setItem("fullName", profileRes.data.fullName);
+      localStorage.setItem("fullName", profileRes.data.data.fullName);
 
       // 3️⃣ Chuyển hướng về trang chủ
       navigate("/");

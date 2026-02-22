@@ -1,4 +1,5 @@
 import profile
+from unittest.mock import patch
 
 from fastapi import APIRouter, Depends
 from app.core.security import get_current_user
@@ -26,8 +27,12 @@ def get_me(current_user: dict = Depends(get_current_user)):
 )
 def update_me(payload: CandidateProfileUpdate, current_user: dict = Depends(get_current_user)):
     patch = payload.model_dump(exclude_unset=True)
-    # pydantic returns Address model for address; convert to dict
     if "address" in patch and patch["address"] is not None:
-        patch["address"] = patch["address"].model_dump()
+        addr = patch["address"]
+        # addr có thể là dict hoặc Pydantic model
+        if hasattr(addr, "model_dump"):
+            patch["address"] = addr.model_dump()
+        elif isinstance(addr, dict):
+            patch["address"] = addr
     profile = svc.update_me(current_user, patch)
     return {"status": "success", "data": profile}

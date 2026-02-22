@@ -7,7 +7,7 @@ function HeaderCandidate() {
   const fullName = localStorage.getItem("fullName");
 
   const handleLogout = () => {
-    localStorage.removeItem("token");
+    localStorage.removeItem("accessToken");
     localStorage.removeItem("fullName");
     navigate("/candidate/login");
   };
@@ -41,6 +41,11 @@ function HeaderCandidate() {
               <NavLink className="nav-link text-light" to="/candidate/companies">Công ty</NavLink>
             </li>
             <li className="nav-item">
+              <NavLink className="nav-link text-light" to="/candidate/applications">
+                Đơn ứng tuyển
+              </NavLink>
+            </li>
+            <li className="nav-item">
               <a
                 href="/employer/login"
                 className="nav-link text-light"
@@ -59,7 +64,13 @@ function HeaderCandidate() {
               </>
             ) : (
               <>
-                <span className="me-3 text-light">Xin chào, {fullName}</span>
+                <NavLink
+                  to="/candidate/profile/details"
+                  className="me-3 text-light text-decoration-none"
+                  style={{ fontWeight: 600 }}
+                >
+                  Xin chào, {fullName}
+                </NavLink>
                 <button className="btn btn-light" onClick={handleLogout}>Đăng xuất</button>
               </>
             )}

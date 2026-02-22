@@ -21,6 +21,11 @@ class CandidateApplicationRepository:
 
     def create(self, candidate_id: str, job_id: str):
         apps = load_json_file(self.app_file)
+        for a in apps:
+            if a.get("candidateId") == candidate_id and a.get("jobId") == job_id:
+            # nếu muốn cho apply lại sau withdrawn thì check status
+                if a.get("status") != "withdrawn":
+                    return {"error": "duplicate"}
         now = self._now()
         app_item = {
             "_id": str(uuid.uuid4()),
