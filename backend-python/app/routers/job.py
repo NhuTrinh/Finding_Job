@@ -3,12 +3,20 @@ from fastapi.security import HTTPAuthorizationCredentials
 from app.schemas.Job import CreateJob 
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.services.job import create_job, get_details_job_by_id, get_job_of_recruiter, update_job_by_id, delete_job_by_id
+from app.services.job import get_all_jobs
 
 security = HTTPBearer()
 
 router  = APIRouter(prefix="/api/v1/jobs", tags=["Job"])
 
-@router.post("", summary="Tạo job mới", description="Tạo một job mới")
+@router.get(
+    "",
+    summary="Lấy danh sách job",
+    description="Lấy tất cả job"
+)
+def list_jobs():
+    return {"status": "success", "data": get_all_jobs()}
+
 def create_new_job(job: CreateJob, credentials: HTTPAuthorizationCredentials = Depends(security)):
     return create_job(job, credentials)
 

@@ -14,7 +14,8 @@ function Home() {
   const fetchJobs = async () => {
     try {
       const res = await api.get("/jobs");
-      setJobs(res.data.jobs || []);
+      const list = Array.isArray(res.data) ? res.data : (res.data.data ?? res.data.jobs);
+      setJobs(list || []);
     } catch (err) {
       console.error(err);
     } finally {
@@ -23,16 +24,17 @@ function Home() {
   };
 
   const handleSearchJobs = async (query, type) => {
-  try {
-    let url = "/jobs";
-    if (type === "jobs") url = `/jobs?search=${query}`;
-    if (type === "location") url = `/jobs?location=${query}`;
-    const res = await api.get(url);
-    setJobs(res.data.jobs || []);
-  } catch (err) {
-    console.error("Error searching jobs:", err);
-  }
-};
+    try {
+      let url = "/jobs";
+      if (type === "jobs") url = `/jobs?search=${query}`;
+      if (type === "location") url = `/jobs?location=${query}`;
+      const res = await api.get(url);
+      const list = Array.isArray(res.data) ? res.data : (res.data.data ?? res.data.jobs);
+      setJobs(list || []);
+    } catch (err) {
+      console.error("Error searching jobs:", err);
+    }
+  };
 
 
   return (
