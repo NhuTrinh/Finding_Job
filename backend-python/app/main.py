@@ -5,6 +5,7 @@ from app.routers import recruiter
 from app.routers import company
 from app.routers import job
 from fastapi.middleware.cors import CORSMiddleware
+from app.routers import auth_candidate, candidate, candidate_applications
 
 app = FastAPI(title = "My FastAPI Application", 
               version = "1.0.0")
@@ -22,6 +23,10 @@ app.include_router(applications.router)
 app.include_router(recruiter.router)
 app.include_router(company.router)
 app.include_router(job.router)
+
+app.include_router(auth_candidate.router)
+app.include_router(candidate.router)
+app.include_router(candidate_applications.router)
 
 @app.get("/health")
 def health_check():

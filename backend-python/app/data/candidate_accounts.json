@@ -1,0 +1,29 @@
+[
+    {
+        "id": "8f48f9f7-a125-4dc2-a0c2-2a6f06a2b8ec",
+        "fullName": "Test Candidate",
+        "email": "testcandidate1@gmail.com",
+        "password": "$2b$12$BBGTqXl4D6gZ.LUqowrPZ.Zh9WSQEYxQ5wYESPzDHuYMwSNxriK.y",
+        "role": "candidate",
+        "createdAt": "2026-02-22T04:07:02.187071Z",
+        "updatedAt": "2026-02-22T04:07:02.187071Z"
+    },
+    {
+        "id": "363671f9-8820-41b4-86c8-60551fda0253",
+        "fullName": "Cand A",
+        "email": "a@gmail.com",
+        "password": "$2b$12$vwF96Fh6lOOOrSmqNh6lO.gwTiPLw7ZqHJhyHo0V2Ug/dRia6WFEW",
+        "role": "candidate",
+        "createdAt": "2026-02-22T05:22:12.321118Z",
+        "updatedAt": "2026-02-22T05:22:12.321118Z"
+    },
+    {
+        "id": "9bc5d885-7b41-4b74-9769-621b3751c9dc",
+        "fullName": "Cand B",
+        "email": "b@gmail.com",
+        "password": "$2b$12$dSNlVpnTRh6fDckIYNv9heqCDnPEO3O1lXn3jfvm/uVT7aNZ2rC8W",
+        "role": "candidate",
+        "createdAt": "2026-02-22T05:22:32.474906Z",
+        "updatedAt": "2026-02-22T05:22:32.474906Z"
+    }
+]
