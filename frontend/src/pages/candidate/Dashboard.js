@@ -9,10 +9,8 @@ const CandidateDashboard = () => {
     useEffect(() => {
         const fetchJobs = async () => {
             try {
-                const res = await axios.get("http://localhost:8000/api/v1/jobs");
-                setJobs(res.data.data);
-                console.log("jobs from API:", res.data.data);
-                
+                const res = await axios.get("http://127.0.0.1:8000/api/v1/jobs");
+                setJobs(res.data.jobs);
             } catch (err) {
                 console.error("Lỗi khi lấy danh sách công việc:", err);
             }
@@ -22,12 +20,11 @@ const CandidateDashboard = () => {
     }, []);
 
     // Lọc danh sách job theo từ khóa
-    const filteredJobs = jobs.filter((job) => {
-        const term = searchTerm.toLowerCase();
-        const title = (job.title || "").toLowerCase();
-        const city = (job.address?.city || "").toLowerCase();
-        return title.includes(term) || city.includes(term);
-    });
+    const filteredJobs = jobs.filter((job) =>
+        job.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.company.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        job.city.toLowerCase().includes(searchTerm.toLowerCase())
+    );
 
     return (
         <>
@@ -46,7 +43,7 @@ const CandidateDashboard = () => {
                 </div>
 
                 <h2 className="mb-4">Danh sách công việc</h2>
-                    <p>Jobs count: {jobs.length}</p>
+
                 {filteredJobs.length === 0 ? (
                     <p>Không tìm thấy công việc phù hợp.</p>
                 ) : (
@@ -55,9 +52,9 @@ const CandidateDashboard = () => {
                             <div key={job._id} className="col-md-4 mb-4">
                                 <div className="p-3 border rounded shadow-sm h-100">
                                     <h5>{job.title}</h5>
-                                    <p className="mb-1"><strong>Công ty ID:</strong> {job.companyId}</p>
-                                    <p className="mb-1"><strong>Địa điểm:</strong> {job.address?.city}</p>
-                                    <p className="mb-1"><strong>Lương:</strong> {job.salaryMin} - {job.salaryMax}</p>
+                                    <p className="mb-1"><strong>Công ty:</strong> {job.company}</p>
+                                    <p className="mb-1"><strong>Địa điểm:</strong> {job.city}</p>
+                                    <p className="mb-1"><strong>Lương:</strong> {job.salary}</p>
                                 </div>
                             </div>
                         ))}

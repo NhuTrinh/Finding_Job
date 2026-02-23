@@ -10,7 +10,7 @@ BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_FILE_APPLICATION = BASE_DIR / "data" / "application.json"
 DATA_FILE_JOBS = BASE_DIR / "data" / "job.json"
 DATA_FILE_PROFILE = BASE_DIR / "data" / "profile.json"
-DATA_FILE_CANDIDATE = BASE_DIR / "data" / "candidate.json"
+DATA_FILE_CANDIDATE = BASE_DIR / "data" / "candidate_accounts.json"
 security = HTTPBearer()
 
 def get_application(credentials: HTTPAuthorizationCredentials = Depends(security)):

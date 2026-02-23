@@ -10,7 +10,7 @@ from app.services.company import get_company, update_company, get_company_by_id
 
 router  = APIRouter(prefix="/api/v1/companies", tags=["Company"])
 
-@router.get("/", response_model=list[CompanyOption], summary="Lấy danh sách công ty cho UI render", description="Lấy danh sách công ty cho UI render")
+@router.get("/", summary="Lấy danh sách công ty cho UI render", description="Lấy danh sách công ty cho UI render")
 def get_company_list():
     return get_company()
 

@@ -18,7 +18,7 @@ const Header = () => {
 
   const handleLogout = () => {
     localStorage.removeItem('token');
-    window.location.href = '/employer/login';
+    window.location.href = '/';
   };
 
   useEffect(() => {

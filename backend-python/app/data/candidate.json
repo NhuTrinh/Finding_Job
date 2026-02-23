@@ -10,5 +10,11 @@
         "fullName": "Ứng Viên H",
         "email": "ungvienh@example.com",
         "role": "candidate"
+    },
+    {
+        "id": "b3f0bd66-e652-4d58-941e-44985b868419",
+        "fullName": "Ứng viên D",
+        "email": "d@gmail.com",
+        "role": "candidate"
     }
 ]

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function SearchBar({ onSearch }) {
   const [searchType, setSearchType] = useState("jobs");
@@ -23,7 +23,7 @@ function SearchBar({ onSearch }) {
       <input
         type="text"
         name="search"
-        placeholder={`Tìm kiếm theo ${searchType}...`}
+        placeholder={`Search by ${searchType}...`}
         className="form-control w-50 me-2"
       />
       <button type="submit" className="btn btn-primary">

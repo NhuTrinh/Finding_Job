@@ -292,7 +292,7 @@ const [showActionModal, setShowActionModal] = useState(false);
                                                         {console.log("Candidate ID:", app.candidateId)}
                                                         <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
                                                             <Link
-                                                                to={`/candidate/${app.candidateId._id}`}
+                                                                to={`/candidate/${app.candidateId.accountId._id}`}
                                                                 onClick={() => localStorage.setItem("candidateData", JSON.stringify(app.candidateId))}
                                                                 state={{ candidate: app.candidateId }}
                                                                 target="_blank"

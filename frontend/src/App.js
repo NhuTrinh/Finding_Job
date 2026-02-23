@@ -23,6 +23,7 @@ import Header from "./components/Header";
 import CandidateCompanies from "./pages/candidate/Companies";
 import CandidateCompanyDetail from "./pages/candidate/CompanyDetail";
 import MyApplications from "./pages/candidate/MyApplications";
+import CandidateUpdateProfile from "./pages/candidate/CandidateUpdateProfile";
 
 
 
@@ -78,6 +79,8 @@ function App() {
             <Route path="/candidate/companies/:id" element={<CandidateCompanyDetail />} />
             <Route path="/candidate/register" element={<CandidateRegister />} />
             <Route path="/candidate/login" element={<CandidateLogin />} />
+            <Route path="/candidate/edit/profile" element={<CandidateUpdateProfile />} />
+
 
           </Route>
 

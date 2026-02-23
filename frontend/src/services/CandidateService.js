@@ -10,6 +10,8 @@ class CandidateService {
     // PUT /api/v1/candidates/me
     return api.put("/candidates/me", profileData);
   }
+
+  
 }
 
 export default new CandidateService();

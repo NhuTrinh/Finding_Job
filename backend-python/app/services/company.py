@@ -10,16 +10,17 @@ DATA_FILE = BASE_DIR / "data" / "company_profile.json"
 security = HTTPBearer()
 
 def get_company():
-    company = load_json_file(DATA_FILE)
+    companies = load_json_file(DATA_FILE)
 
-    list_company = []
+    result = []
+    for c in companies:
+        c["_id"] = str(c.pop("id"))  # đổi id -> _id
+        result.append(c)
 
-    for c in company:
-        dic_company = {}
-        dic_company["id"] = c['id']
-        dic_company["name"] = c['name']
-        list_company.append(dic_company)
-    return list_company
+    return {
+        "status": "success",
+        "data": result
+    }
 
 def update_company(id, update_data):
     company = load_json_file(DATA_FILE)

@@ -25,5 +25,26 @@
         "role": "candidate",
         "createdAt": "2026-02-22T05:22:32.474906Z",
         "updatedAt": "2026-02-22T05:22:32.474906Z"
+    },
+    {
+        "id": "b3f0bd66-e652-4d58-941e-44985b868419",
+        "fullName": "Ứng viên D",
+        "email": "d@gmail.com",
+        "password": "$2b$12$JkL8NP657fOD.UgvSlYSauAPPaKbh/.TvZ3AZKUeLSSOYj7/tivRe",
+        "role": "candidate",
+        "createdAt": "2026-02-23T17:43:12.200513Z",
+        "updatedAt": "2026-02-23T17:43:12.200513Z"
+    },
+    {
+        "id": "69973ba827338819eb9e630c",
+        "fullName": "Ứng Viên G",
+        "email": "ungvieng@example.com",
+        "role": "candidate"
+    },
+    {
+        "id": "69973ba827338819eb9e630d",
+        "fullName": "Ứng Viên H",
+        "email": "ungvienh@example.com",
+        "role": "candidate"
     }
 ]

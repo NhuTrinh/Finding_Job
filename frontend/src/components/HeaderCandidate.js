@@ -1,4 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
+import { Dropdown, Modal } from 'react-bootstrap';
+import avatar from '../assets/img/avatar.png'
 
 function HeaderCandidate() {
 
@@ -7,7 +9,7 @@ function HeaderCandidate() {
   const fullName = localStorage.getItem("fullName");
 
   const handleLogout = () => {
-    localStorage.removeItem("accessToken");
+    localStorage.removeItem("token");
     localStorage.removeItem("fullName");
     navigate("/candidate/login");
   };
@@ -41,11 +43,6 @@ function HeaderCandidate() {
               <NavLink className="nav-link text-light" to="/candidate/companies">Công ty</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link text-light" to="/candidate/applications">
-                Đơn ứng tuyển
-              </NavLink>
-            </li>
-            <li className="nav-item">
               <a
                 href="/employer/login"
                 className="nav-link text-light"
@@ -64,13 +61,24 @@ function HeaderCandidate() {
               </>
             ) : (
               <>
-                <NavLink
-                  to="/candidate/profile/details"
-                  className="me-3 text-light text-decoration-none"
-                  style={{ fontWeight: 600 }}
-                >
-                  Xin chào, {fullName}
-                </NavLink>
+                  {/* <span className="me-3 text-light">Xin chào, {fullName}</span> */}
+                  <Dropdown align="end" className="mt-2 mt-lg-0">
+                        <Dropdown.Toggle
+                            as="div"
+                            style={{ cursor: 'pointer' }}
+                            className="d-flex align-items-center"
+                        >
+                            <span className="me-3 text-light">Hi, {fullName}</span>
+                        </Dropdown.Toggle>
+
+                        <Dropdown.Menu>
+                            <Dropdown.Item onClick={() => navigate("/candidate/profile/details")}>
+                                Hồ sơ Timviec
+                            </Dropdown.Item>
+                            <Dropdown.Item onClick={() => navigate("/candidate/applications")}>Đã ứng tuyển</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                  
                 <button className="btn btn-light" onClick={handleLogout}>Đăng xuất</button>
               </>
             )}

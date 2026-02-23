@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import api from "../../api";
+import { Link } from "react-router-dom";
 import SearchBar from "../../components/SearchBar";
 
 function Companies() {
@@ -36,7 +36,7 @@ function Companies() {
 };
 
 
-  if (loading) return <p className="text-center mt-4">Loading...</p>;
+  if (loading) return <p className="text-center mt-4">Đang tải...</p>;
 
   return (
     <div className="container my-4">
@@ -60,13 +60,13 @@ function Companies() {
                     👥 {company.size ? `${company.size} employees` : "Size: N/A"}
                   </p>
                   <p className="small">
-                    {company.description || "Chưa có mô tả công ty ."}
+                    {company.description || "No description available."}
                   </p>
                   <Link
                     to={`/candidate/companies/${company._id}`}
                     className="btn btn-light mt-3 w-100 fw-bold"
                   >
-                    View Details
+                    Xem chi tiết
                   </Link>
                 </div>
               </div>
@@ -74,7 +74,7 @@ function Companies() {
           ))}
         </div>
       ) : (
-        <p className="text-center text-muted">No companies found.</p>
+        <p className="text-center text-muted">Không có company.</p>
       )}
     </div>
   );

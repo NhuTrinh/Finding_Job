@@ -66,8 +66,9 @@ const CandidateHeader = () => {
                             <img
                                 src={avatar}
                                 alt="avatar"
-                                className="rounded-circle"
+                                className="rounded-circle me-2"
                                 style={{ width: '40px', height: '40px' }}
+                                width="32" height="32"
                             />
                         </Dropdown.Toggle>
 

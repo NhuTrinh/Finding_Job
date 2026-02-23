@@ -379,5 +379,208 @@
         "interests": [],
         "createdAt": "2026-02-22T11:47:49.499724Z",
         "updatedAt": "2026-02-22T17:19:45.469609Z"
+    },
+    {
+        "status": "success",
+        "fullName": "Ứng Viên A",
+        "email": "ungviena@example.com",
+        "avatar": "",
+        "jobTitle": "",
+        "phoneNumber": "0987654321",
+        "birthDay": "1995-05-20T00:00:00.000Z",
+        "address": {
+            "line": "123 Đường ABC",
+            "city": "Hà Nội",
+            "country": "Việt Nam"
+        },
+        "link": "https://linkedin.com/in/example",
+        "aboutMe": "Tôi là một lập trình viên đam mê với hơn 5 năm kinh nghiệm.",
+        "education": [
+            {
+                "schoolName": "Đại học Bách Khoa Hà Nội",
+                "degree": "Cử nhân",
+                "major": "Khoa học Máy tính",
+                "startDate": "2013-09-01T00:00:00.000Z",
+                "endDate": "2017-06-01T00:00:00.000Z",
+                "description": "Tốt nghiệp loại giỏi."
+            }
+        ],
+        "workExperience": [
+            {
+                "companyName": "TechSoft Co.",
+                "jobTitle": "Frontend Developer",
+                "startDate": "2018-01-01T00:00:00.000Z",
+                "endDate": "2022-12-31T00:00:00.000Z",
+                "description": "Phát triển các ứng dụng React.",
+                "project": "Hệ thống quản lý nhân sự nội bộ"
+            }
+        ],
+        "skills": [
+            {
+                "coreSkills": [
+                    "JavaScript",
+                    "React",
+                    "HTML",
+                    "CSS"
+                ],
+                "softSkills": [
+                    "Giao tiếp",
+                    "Làm việc nhóm"
+                ]
+            }
+        ],
+        "foreignLanguages": [
+            {
+                "language": "English",
+                "level": "Intermediate"
+            }
+        ],
+        "highlightProjects": [
+            {
+                "name": "E-commerce Web",
+                "startDate": "2021-01-01T00:00:00.000Z",
+                "endDate": "2021-06-01T00:00:00.000Z",
+                "description": "Xây dựng website bán hàng đa nền tảng.",
+                "projectUrl": "https://mystore.com"
+            }
+        ],
+        "certificates": [
+            {
+                "name": "React Developer Certificate",
+                "organization": "Udemy",
+                "issueDate": "2020-08-15T00:00:00.000Z",
+                "certificateUrl": "https://udemy.com/certificate/react123",
+                "description": "Chứng chỉ hoàn thành khoá học React nâng cao."
+            }
+        ],
+        "awards": [
+            {
+                "name": "Nhân viên xuất sắc năm",
+                "organization": "TechSoft Co.",
+                "issueDate": "2021-12-31T00:00:00.000Z",
+                "description": "Được vinh danh nhờ đóng góp xuất sắc trong dự án A."
+            }
+        ],
+        "profile": {
+            "avatar": "https://example.com/avatar.jpg",
+            "jobTitle": "Frontend Developer",
+            "phoneNumber": "0987654321",
+            "birthDay": "1995-05-20",
+            "gender": "Male",
+            "address": {
+                "line": "123 Đường ABC",
+                "city": "Hà Nội",
+                "country": "Việt Nam"
+            },
+            "link": "https://linkedin.com/in/example",
+            "aboutMe": "Tôi là một lập trình viên đam mê với hơn 5 năm kinh nghiệm.",
+            "education": [
+                {
+                    "schoolName": "Đại học Bách Khoa Hà Nội",
+                    "degree": "Cử nhân",
+                    "major": "Khoa học Máy tính",
+                    "startDate": "2013-09-01",
+                    "endDate": "2017-06-01",
+                    "description": "Tốt nghiệp loại giỏi."
+                }
+            ],
+            "workExperience": [
+                {
+                    "companyName": "TechSoft Co.",
+                    "jobTitle": "Frontend Developer",
+                    "startDate": "2018-01-01",
+                    "endDate": "2022-12-31",
+                    "description": "Phát triển các ứng dụng React.",
+                    "project": "Hệ thống quản lý nhân sự nội bộ"
+                }
+            ],
+            "skills": [
+                {
+                    "coreSkills": [
+                        "JavaScript",
+                        "React",
+                        "HTML",
+                        "CSS"
+                    ],
+                    "softSkills": [
+                        "Giao tiếp",
+                        "Làm việc nhóm"
+                    ]
+                }
+            ],
+            "foreignLanguages": [
+                {
+                    "language": "English",
+                    "level": "Intermediate"
+                }
+            ],
+            "highlightProjects": [
+                {
+                    "name": "E-commerce Web",
+                    "startDate": "2021-01-01",
+                    "endDate": "2021-06-01",
+                    "description": "Xây dựng website bán hàng đa nền tảng.",
+                    "projectUrl": "https://mystore.com"
+                }
+            ],
+            "certificates": [
+                {
+                    "name": "React Developer Certificate",
+                    "organization": "Udemy",
+                    "issueDate": "2020-08-15",
+                    "certificateUrl": "https://udemy.com/certificate/react123",
+                    "description": "Chứng chỉ hoàn thành khoá học React nâng cao."
+                }
+            ],
+            "awards": [
+                {
+                    "name": "Nhân viên xuất sắc năm",
+                    "organization": "TechSoft Co.",
+                    "issueDate": "2021-12-31",
+                    "description": "Được vinh danh nhờ đóng góp xuất sắc trong dự án A."
+                }
+            ]
+        },
+        "attachments": {
+            "preferredWorkLocation": [
+                "Hà Nội",
+                "Đà Nẵng"
+            ],
+            "totalYearsOfExperience": 5,
+            "currentJobLevel": "Middle",
+            "expectedWorkingModel": "Hybrid",
+            "expectedSalary": {
+                "salaryMin": 1500,
+                "salaryMax": 2500
+            },
+            "currentSalary": 1200,
+            "coverLetter": "Tôi mong muốn được phát triển sự nghiệp tại công ty."
+        },
+        "accountId": "69973ba827338819eb9e630d"
+    },
+    {
+        "accountId": "b3f0bd66-e652-4d58-941e-44985b868419",
+        "fullName": "Ứng viên D",
+        "email": "d@gmail.com",
+        "avatar": "",
+        "jobTitle": "",
+        "phoneNumber": "",
+        "birthDay": "",
+        "address": {
+            "line": "",
+            "city": "",
+            "country": ""
+        },
+        "link": "",
+        "aboutMe": "",
+        "education": [],
+        "workExperience": [],
+        "skills": [],
+        "projects": [],
+        "certificates": [],
+        "languages": [],
+        "interests": [],
+        "createdAt": "2026-02-23T17:43:12.208901Z",
+        "updatedAt": "2026-02-23T17:43:12.208901Z"
     }
 ]
