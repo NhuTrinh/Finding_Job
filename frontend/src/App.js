@@ -22,7 +22,7 @@ import CandidateLayout from "./components/CandidateCardLayout"
 import Header from "./components/Header";
 import CandidateCompanies from "./pages/candidate/Companies";
 import CandidateCompanyDetail from "./pages/candidate/CompanyDetail";
-
+import MyApplications from "./pages/candidate/MyApplications";
 
 
 
@@ -30,12 +30,12 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        
-          <Routes>
-            <Route path="/employer/login" element={<Login />} />
-            <Route path="/employer/register" element={<Register />} />
 
-            {/* <Route
+        <Routes>
+          <Route path="/employer/login" element={<Login />} />
+          <Route path="/employer/register" element={<Register />} />
+
+          {/* <Route
               path="/candidate/dashboard"
               element={
                 <ProtectedRoute role="candidate">
@@ -44,46 +44,47 @@ function App() {
               }
             /> */}
 
-            <Route
-              path="/employer/dashboard"
-              element={
-                <ProtectedRoute role="recruiter">
-                  <EmployerDashboard />
-                </ProtectedRoute>
-              }
-            />
+          <Route
+            path="/employer/dashboard"
+            element={
+              <ProtectedRoute role="recruiter">
+                <EmployerDashboard />
+              </ProtectedRoute>
+            }
+          />
 
 
-            <Route path="/job/:id" element={<JobDetail />} />
-            <Route path="/employer/jobs/:id/edit" element={<EditJob />} />
-            <Route path="/employer/jobs/:id" element={<JobDetail />} />
+          <Route path="/job/:id" element={<JobDetail />} />
+          <Route path="/employer/jobs/:id/edit" element={<EditJob />} />
+          <Route path="/employer/jobs/:id" element={<JobDetail />} />
           <Route path="/employer/jobs/create" element={<CreateJob />} />
           <Route path="/employer/profile/details" element={<EmployerProfile />} />
 
 
-          
-
-            <Route path="/candidate/:id" element={<CandidateDetails />} />
-            <Route path="/candidate/profile/details" element={<CandidateProfile />} />
 
 
+          <Route path="/candidate/:id" element={<CandidateDetails />} />
+          <Route path="/candidate/profile/details" element={<CandidateProfile />} />
 
-         
+
+
+
 
           <Route element={<CandidateLayout />}>
             <Route path="/" element={<CandidateHome />} />
             <Route path="/jobs/:id" element={<CandidateJobDetail />} />
+            <Route path="/candidate/applications" element={<MyApplications />} />
             <Route path="/candidate/companies" element={<CandidateCompanies />} />
             <Route path="/candidate/companies/:id" element={<CandidateCompanyDetail />} />
             <Route path="/candidate/register" element={<CandidateRegister />} />
             <Route path="/candidate/login" element={<CandidateLogin />} />
-            
+
           </Route>
-            
-          
+
+
           <Route path="/unauthorized" element={<h2>Không có quyền truy cập</h2>} />
-          </Routes>
-  
+        </Routes>
+
       </Router>
     </AuthProvider>
   );

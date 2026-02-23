@@ -11,6 +11,9 @@ DATA_FILE = BASE_DIR / "data" / "job.json"
 AUTH_FILE = BASE_DIR / "data" / "auth_register.json"
 security = HTTPBearer()
 
+def get_all_jobs():
+    return load_json_file(DATA_FILE)
+
 def get_recruiter_by_id(recruiter_id: str):
     recruiters = load_json_file(AUTH_FILE)
 
