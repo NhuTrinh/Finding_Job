@@ -27,5 +27,35 @@
             }
         },
         "id": "1f77791f-73c4-4067-b745-eee8f5d79bb8"
+    },
+    {
+        "fullName": "HoangLong",
+        "email": "testrecruiter2@gmail.com",
+        "password": "$2b$12$cagwvhADJQ3PMA9plcQfFOjw3h6pULw9oZ.E.dhFMQKmytpJHR4uu",
+        "company": {
+            "id": 10,
+            "name": "ABC",
+            "address": {
+                "line": "123 CDE",
+                "city": "HCM",
+                "country": "Viet Nam"
+            }
+        },
+        "id": "0635018e-2e1f-4314-9467-82fbc0fb4458"
+    },
+    {
+        "fullName": "longnguyen",
+        "email": "recruiter11@gmail.com",
+        "password": "$2b$12$.SiWEjfulxpke.QykZaNMeztGXYdi7KcpZ4mgv.MME/CVtGzNK9ce",
+        "company": {
+            "id": 1,
+            "name": "ABC",
+            "address": {
+                "line": "123 CDE",
+                "city": "HCM",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "1a85fcea-4012-461e-ba56-e1b16d285794"
     }
 ]

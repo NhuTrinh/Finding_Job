@@ -16,5 +16,17 @@
         "fullName": "Ứng viên D",
         "email": "d@gmail.com",
         "role": "candidate"
+    },
+    {
+        "id": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "fullName": "NhuTrinh",
+        "email": "testcandidate2@gmail.com",
+        "role": "candidate"
+    },
+    {
+        "id": "2aa81e59-373d-479d-8901-385279359fc5",
+        "fullName": "LongNguyen",
+        "email": "candidate1@gmail.com",
+        "role": "candidate"
     }
 ]

@@ -46,5 +46,23 @@
         "fullName": "Ứng Viên H",
         "email": "ungvienh@example.com",
         "role": "candidate"
+    },
+    {
+        "id": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "fullName": "NhuTrinh",
+        "email": "testcandidate2@gmail.com",
+        "password": "$2b$12$J2.VGE1CEC5fVorpV5SH.eV2dpO64ThkPeYas1l5teMDmMQCqUZfy",
+        "role": "candidate",
+        "createdAt": "2026-02-24T03:45:47.157512Z",
+        "updatedAt": "2026-02-24T03:45:47.157512Z"
+    },
+    {
+        "id": "2aa81e59-373d-479d-8901-385279359fc5",
+        "fullName": "LongNguyen",
+        "email": "candidate1@gmail.com",
+        "password": "$2b$12$uRdtAI1gxtduPU07O019X.kojcdWDx/rY3gbCFnjNevqxQnJGwfzy",
+        "role": "candidate",
+        "createdAt": "2026-02-24T12:58:09.340709Z",
+        "updatedAt": "2026-02-24T12:58:09.340709Z"
     }
 ]
