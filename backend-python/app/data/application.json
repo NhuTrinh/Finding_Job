@@ -62,5 +62,69 @@
         "status": "withdrawn",
         "createdAt": "2026-02-22T12:37:34.620930Z",
         "updatedAt": "2026-02-22T13:04:21.710938Z"
+    },
+    {
+        "_id": "9580ac90-1bd1-4d32-81e5-0f55778706c8",
+        "candidateId": "8f48f9f7-a125-4dc2-a0c2-2a6f06a2b8ec",
+        "jobId": "6f4d666d-7aed-4d4a-825f-51dbb70160ab",
+        "status": "pending",
+        "createdAt": "2026-02-24T02:44:23.844904Z",
+        "updatedAt": "2026-02-24T02:44:23.844904Z"
+    },
+    {
+        "_id": "86ee7c27-dcd9-4fa1-a104-1d1f648389fc",
+        "candidateId": "8f48f9f7-a125-4dc2-a0c2-2a6f06a2b8ec",
+        "jobId": "6f4d666d-7aed-4d4a-825f-51dbb70160aa",
+        "status": "pending",
+        "createdAt": "2026-02-24T02:44:32.137987Z",
+        "updatedAt": "2026-02-24T02:44:32.137987Z"
+    },
+    {
+        "_id": "4998fd6b-edf2-440e-869c-c54a4be75946",
+        "candidateId": "2aa81e59-373d-479d-8901-385279359fc5",
+        "jobId": "6f4d666d-7aed-4d4a-825f-51dbb70160aa",
+        "status": "withdrawn",
+        "createdAt": "2026-02-24T12:59:33.270920Z",
+        "updatedAt": "2026-02-24T12:59:51.445302Z"
+    },
+    {
+        "_id": "d37cda0a-f16f-4906-a4a0-7ec241a11790",
+        "candidateId": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "jobId": "6f4d666d-7aed-4d4a-825f-51dbb70160aa",
+        "status": "pending",
+        "createdAt": "2026-02-24T14:04:04.517048Z",
+        "updatedAt": "2026-02-24T14:04:04.517048Z"
+    },
+    {
+        "_id": "b08e4517-952e-4533-b7b0-372c3133c010",
+        "candidateId": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "jobId": "96b7395b-2fd4-4094-a62c-899409c4c92b",
+        "status": "accept",
+        "createdAt": "2026-02-24T17:13:21.488859Z",
+        "updatedAt": "2026-02-24T17:13:21.488859Z"
+    },
+    {
+        "_id": "ee38c9b2-a89b-4d30-b3c3-5841786f6090",
+        "candidateId": "69973ba827338819eb9e630c",
+        "jobId": "96b7395b-2fd4-4094-a62c-899409c4c92b",
+        "status": "withdrawn",
+        "createdAt": "2026-02-24T17:18:18.694110Z",
+        "updatedAt": "2026-02-24T17:36:32.332932Z"
+    },
+    {
+        "_id": "f13f73e0-04ec-453a-b5cf-bf8e64468847",
+        "candidateId": "69973ba827338819eb9e630c",
+        "jobId": "96b7395b-2fd4-4094-a62c-899409c4c92b",
+        "status": "pending",
+        "createdAt": "2026-02-24T17:38:54.335161Z",
+        "updatedAt": "2026-02-24T17:38:54.335161Z"
+    },
+    {
+        "_id": "56f024de-2aeb-4fe4-91f4-22694e35095c",
+        "candidateId": "bfa28703-a361-4dba-bead-da0f44d91239",
+        "jobId": "687cafc5-7e62-450e-a0fe-d35c01a47626",
+        "status": "pending",
+        "createdAt": "2026-02-24T19:53:07.976540Z",
+        "updatedAt": "2026-02-24T19:53:07.976540Z"
     }
 ]

@@ -16,5 +16,29 @@
         "fullName": "Ứng viên D",
         "email": "d@gmail.com",
         "role": "candidate"
+    },
+    {
+        "id": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "fullName": "NhuTrinh",
+        "email": "testcandidate2@gmail.com",
+        "role": "candidate"
+    },
+    {
+        "id": "2aa81e59-373d-479d-8901-385279359fc5",
+        "fullName": "LongNguyen",
+        "email": "candidate1@gmail.com",
+        "role": "candidate"
+    },
+    {
+        "id": "fc354b93-c9d7-422e-8500-abacf68c827f",
+        "fullName": "Ứng Viên 13",
+        "email": "test13@example.com",
+        "role": "candidate"
+    },
+    {
+        "id": "bfa28703-a361-4dba-bead-da0f44d91239",
+        "fullName": "Ứng Viên 14",
+        "email": "test14@example.com",
+        "role": "candidate"
     }
 ]

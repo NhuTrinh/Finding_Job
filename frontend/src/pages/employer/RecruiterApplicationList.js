@@ -41,7 +41,7 @@ const RecruiterApplicationList = () => {
 
     return (
         <div className="p-4">
-            <h2 className="text-xl font-bold mb-4" className='text-success'>Danh sách ứng viên</h2>
+            <h2 className='text-success'>Danh sách ứng viên</h2>
             {applications.length ? (
                 <div className="table-responsive">
                     <table className="table table-bordered text-center">

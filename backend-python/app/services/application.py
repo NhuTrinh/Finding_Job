@@ -19,42 +19,57 @@ def get_application(credentials: HTTPAuthorizationCredentials = Depends(security
 
     if not payload:
         raise HTTPException(status_code=401, detail="Invalid token")
-    
-    jobs = load_json_file(DATA_FILE_JOBS)
-    application = load_json_file(DATA_FILE_APPLICATION)
-    profile = load_json_file(DATA_FILE_PROFILE)
-    candidate = load_json_file(DATA_FILE_CANDIDATE)
 
     recruiter_id = payload.get("id")
 
-    profile_map = {p["accountId"]: p for p in profile}
-    account_map = {a["id"]: a for a in candidate}
+    jobs = load_json_file(DATA_FILE_JOBS)
+    applications = load_json_file(DATA_FILE_APPLICATION)
+    profiles = load_json_file(DATA_FILE_PROFILE)
+    candidates = load_json_file(DATA_FILE_CANDIDATE)
+
+    profile_map = {p["accountId"]: p for p in profiles}
+    account_map = {a["id"]: a for a in candidates}
     job_map = {j["_id"]: j for j in jobs}
 
     result = []
 
-    for app in application:
+    for app in applications:
+        job = job_map.get(app["jobId"])
+        if not job:
+            continue
+
+        # chỉ lấy application thuộc recruiter đang login
+        if job["recruiterId"] != recruiter_id:
+            continue
+
         app_item = app.copy()
+
+        # ===== populate jobId =====
+        app_item["jobId"] = job
+
+        # ===== populate candidateId =====
         account_id = app["candidateId"]
 
-        # ===== candidate =====
-        profile = profile_map.get(account_id)
-        if profile:
-            candidate = profile.copy()
-            account = account_map.get(account_id)
+        candidate_profile = profile_map.get(account_id)
+        account = account_map.get(account_id)
 
-            candidate["accountId"] = {
-                "_id": account["id"],
-                "fullName": account["fullName"],
-                "email": account["email"]
-            } if account else None
+        if candidate_profile:
+            candidate_data = candidate_profile.copy()
+
+            if account:
+                candidate_data["accountId"] = {
+                    "_id": account["id"],
+                    "fullName": account["fullName"],
+                    "email": account["email"]
+                }
+
+            app_item["candidateId"] = candidate_data
         else:
-            candidate = None
+            app_item["candidateId"] = None
 
-        app_item["candidateId"] = candidate
-        app_item["jobId"] = job_map.get(app["jobId"])
+        if app_item["status"] != "withdrawn":
+            result.append(app_item)
 
-        result.append(app_item)
 
     return {
         "status": "success",

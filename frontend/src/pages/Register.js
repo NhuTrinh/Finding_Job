@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { AuthContext } from '../contexts/AuthContext';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-
+import CompanyService from "../services/CompanyService";
 
 const Register = () => {
     const [formData, setFormData] = useState({
@@ -14,7 +14,7 @@ const Register = () => {
         companyName: '',
         addressLine: '',
         city: '',
-        country: ''
+        country: 'Việt Nam'
     });
 
     const [error, setError] = useState('');
@@ -22,6 +22,21 @@ const Register = () => {
     const navigate = useNavigate();
     const [formErrors, setFormErrors] = useState({});
     const [success, setSuccess] = useState('');
+    const [companies, setCompanies] = useState([]);
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        CompanyService.getAllCompanies()
+            .then(res => {
+                setCompanies(res.data.data);
+                console.log("Danh sách công ty:", res.data.data);
+                setLoading(false);
+            })
+            .catch(err => {
+                console.error("Lỗi khi lấy danh sách công ty:", err);
+                setLoading(false);
+            });
+    }, []);
 
 
     const handleChange = (e) => {
@@ -72,21 +87,24 @@ const Register = () => {
         }
         setFormErrors({});
 
-        try {
-            // Gọi hàm register từ AuthContext
-            await register({
-                fullName: formData.fullName,
-                email: formData.email,
-                password: formData.password,
-                company: {
-                    name: formData.companyName,
-                    address: {
-                        line: formData.addressLine,
-                        city: formData.city,
-                        country: formData.country
-                    }
+        const payload = {
+            fullName: formData.fullName,
+            email: formData.email,
+            password: formData.password,
+            company: {
+                id: parseInt(formData.companyName), 
+                address: {
+                    line: formData.addressLine,
+                    city: formData.city,
+                    country: formData.country
                 }
-            });
+            }
+        };
+
+        try {
+            console.log("Dữ liệu gửi đi:", payload);
+            // Gọi hàm register từ AuthContext
+            await register(payload);
 
             // Reset form sau khi đăng ký
             setFormData({
@@ -101,7 +119,7 @@ const Register = () => {
             });
             setSuccess('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
             setTimeout(() => {
-                navigate('/login');
+                navigate('/employer/login');
             }, 3000);
         } catch (err) {
             if (err.errors) {
@@ -111,6 +129,13 @@ const Register = () => {
             }
         }
     };
+
+    const cities = [
+        "Hà Nội",
+        "TP. Hồ Chí Minh",
+        "Đà Nẵng",
+        "Cần Thơ",
+    ];
 
     return (
         <div className="container mt-5" style={{ maxWidth: '400px' }}>
@@ -161,12 +186,32 @@ const Register = () => {
                 </div>
 
                 <div className="mb-2">
-                    <label className="form-label" style={{ color: 'black' }}>Tên công ty <span style={{ color: 'red' }}>*</span></label>
-                    <input type="text" className="form-control" name="companyName" value={formData.companyName} onChange={handleChange} onFocus={() => {
-                        setError('');
-                        setFormErrors(prev => ({ ...prev, fullName: '' }));
-                    }} />
-                    {formErrors.companyName && <div className="text-danger">{formErrors.companyName}</div>}
+                    <label className="form-label" style={{ color: "black" }}>
+                        Tên công ty <span style={{ color: "red" }}>*</span>
+                    </label>
+
+                    <select
+                        className="form-control"
+                        name="companyName"
+                        value={formData.companyName}
+                        onChange={handleChange}
+                        onFocus={() => {
+                            setError("");
+                            setFormErrors((prev) => ({ ...prev, companyName: "" }));
+                        }}
+                    >
+                        <option value="">-- Chọn công ty --</option>
+
+                        {companies.map((company) => (
+                            <option key={company._id} value={company._id}>
+                                {company.name}
+                            </option>
+                        ))}
+                    </select>
+
+                    {formErrors.companyName && (
+                        <div className="text-danger">{formErrors.companyName}</div>
+                    )}
                 </div>
 
                 <div className="mb-2">
@@ -179,21 +224,50 @@ const Register = () => {
                 </div>
 
                 <div className="mb-2">
-                    <label className="form-label" style={{ color: 'black' }}>Thành phố <span style={{ color: 'red' }}>*</span></label>
-                    <input type="text" className="form-control" name="city" value={formData.city} onChange={handleChange} onFocus={() => {
-                        setError('');
-                        setFormErrors(prev => ({ ...prev, fullName: '' }));
-                    }} />
-                    {formErrors.city && <div className="text-danger">{formErrors.city}</div>}
+                    <label className="form-label" style={{ color: "black" }}>
+                        Thành phố <span style={{ color: "red" }}>*</span>
+                    </label>
+
+                    <select
+                        className="form-control"
+                        name="city"
+                        value={formData.city}
+                        onChange={handleChange}
+                        onFocus={() => {
+                            setError("");
+                            setFormErrors((prev) => ({ ...prev, city: "" }));
+                        }}
+                    >
+                        <option value="">-- Chọn thành phố --</option>
+
+                        {cities.map((city) => (
+                            <option key={city} value={city}>
+                                {city}
+                            </option>
+                        ))}
+                    </select>
+
+                    {formErrors.city && (
+                        <div className="text-danger">{formErrors.city}</div>
+                    )}
                 </div>
 
                 <div className="mb-3">
-                    <label className="form-label" style={{ color: 'black' }}>Quốc gia <span style={{ color: 'red' }}>*</span></label>
-                    <input type="text" className="form-control" name="country" value={formData.country} onChange={handleChange} onFocus={() => {
-                        setError('');
-                        setFormErrors(prev => ({ ...prev, fullName: '' }));
-                    }} />
-                    {formErrors.country && <div className="text-danger">{formErrors.country}</div>}
+                    <label className="form-label" style={{ color: "black" }}>
+                        Quốc gia <span style={{ color: "red" }}>*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="country"
+                        value={formData.country}
+                        disabled
+                    />
+
+                    {formErrors.country && (
+                        <div className="text-danger">{formErrors.country}</div>
+                    )}
                 </div>
 
                 <button type="submit" className="btn w-100" style={{ backgroundColor: '#0D5EA6', color: 'white' }} disabled={isFormEmpty}>
@@ -201,7 +275,7 @@ const Register = () => {
                 </button>
 
                 <div className="text-center mt-3">
-                    <Link to="/login" className="text-decoration-none" style={{ fontWeight: 'bold' }}>
+                    <Link to="/employer/login" className="text-decoration-none" style={{ fontWeight: 'bold' }}>
                         Đã có tài khoản? Đăng nhập ngay
                     </Link>
                 </div>

@@ -27,5 +27,65 @@
             }
         },
         "id": "1f77791f-73c4-4067-b745-eee8f5d79bb8"
+    },
+    {
+        "fullName": "HoangLong",
+        "email": "testrecruiter2@gmail.com",
+        "password": "$2b$12$cagwvhADJQ3PMA9plcQfFOjw3h6pULw9oZ.E.dhFMQKmytpJHR4uu",
+        "company": {
+            "id": 10,
+            "name": "ABC",
+            "address": {
+                "line": "123 CDE",
+                "city": "HCM",
+                "country": "Viet Nam"
+            }
+        },
+        "id": "0635018e-2e1f-4314-9467-82fbc0fb4458"
+    },
+    {
+        "fullName": "longnguyen",
+        "email": "recruiter11@gmail.com",
+        "password": "$2b$12$.SiWEjfulxpke.QykZaNMeztGXYdi7KcpZ4mgv.MME/CVtGzNK9ce",
+        "company": {
+            "id": 1,
+            "name": "ABC",
+            "address": {
+                "line": "123 CDE",
+                "city": "HCM",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "1a85fcea-4012-461e-ba56-e1b16d285794"
+    },
+    {
+        "fullName": "Nguyen Van A",
+        "email": "recruiter12@example.com",
+        "password": "$2b$12$Otf70ED1o55AVCM2yvIfVujz5ON7LpWiw7ztiro/hcyF7wdLB4ujG",
+        "company": {
+            "id": 2,
+            "name": "Công ty Phần mềm Sao Bắc",
+            "address": {
+                "line": "123 Đường Lê Lợi",
+                "city": "Hà Nội",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "7b61dafa-84ed-404e-b50d-9af517a8b4f5"
+    },
+    {
+        "fullName": "Ứng Viên 13",
+        "email": "recruiter13@example.com",
+        "password": "$2b$12$GJsOPhKleAIu3PS1I1xMWOhdDNlVZsVAEDjJXLINFM/AOpv0DO2xi",
+        "company": {
+            "id": 2,
+            "name": "Công ty Phần mềm Sao Bắc",
+            "address": {
+                "line": "448 Trần Hưng Đạo",
+                "city": "TP. Hồ Chí Minh",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "7d0f4e78-7496-4a01-bb92-df93c20a1117"
     }
 ]

@@ -357,19 +357,19 @@
     },
     {
         "accountId": "8f48f9f7-a125-4dc2-a0c2-2a6f06a2b8ec",
-        "fullName": "Ứng viên 1",
+        "fullName": "Long",
         "email": "testcandidate1@gmail.com",
         "avatar": "",
-        "jobTitle": "312312",
-        "phoneNumber": "532523532425",
-        "birthDay": "",
+        "jobTitle": "Devops Engineer",
+        "phoneNumber": "123456789",
+        "birthDay": "1993-01-04",
         "address": {
-            "line": "",
-            "city": "534253425342534",
+            "line": "123 đường 5",
+            "city": "HCM",
             "country": ""
         },
         "link": "",
-        "aboutMe": "3253262362363",
+        "aboutMe": "Đang học VB2 tại UIT",
         "education": [],
         "workExperience": [],
         "skills": [],
@@ -378,7 +378,7 @@
         "languages": [],
         "interests": [],
         "createdAt": "2026-02-22T11:47:49.499724Z",
-        "updatedAt": "2026-02-22T17:19:45.469609Z"
+        "updatedAt": "2026-02-24T02:48:50.195690Z"
     },
     {
         "status": "success",
@@ -582,5 +582,55 @@
         "interests": [],
         "createdAt": "2026-02-23T17:43:12.208901Z",
         "updatedAt": "2026-02-23T17:43:12.208901Z"
+    },
+    {
+        "accountId": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "fullName": "NhuTrinh",
+        "email": "testcandidate2@gmail.com",
+        "avatar": "",
+        "jobTitle": "",
+        "phoneNumber": "",
+        "birthDay": "",
+        "address": {
+            "line": "",
+            "city": "",
+            "country": ""
+        },
+        "link": "",
+        "aboutMe": "",
+        "education": [],
+        "workExperience": [],
+        "skills": [],
+        "projects": [],
+        "certificates": [],
+        "languages": [],
+        "interests": [],
+        "createdAt": "2026-02-24T03:45:47.159220Z",
+        "updatedAt": "2026-02-24T03:45:47.159220Z"
+    },
+    {
+        "accountId": "2aa81e59-373d-479d-8901-385279359fc5",
+        "fullName": "LongNguyen",
+        "email": "candidate1@gmail.com",
+        "avatar": "",
+        "jobTitle": "Devops",
+        "phoneNumber": "123456789",
+        "birthDay": "1993-01-01",
+        "address": {
+            "line": "123 đường 5",
+            "city": "",
+            "country": ""
+        },
+        "link": "",
+        "aboutMe": "sinh viên UIT",
+        "education": [],
+        "workExperience": [],
+        "skills": [],
+        "projects": [],
+        "certificates": [],
+        "languages": [],
+        "interests": [],
+        "createdAt": "2026-02-24T12:58:09.342334Z",
+        "updatedAt": "2026-02-24T13:00:45.668952Z"
     }
 ]

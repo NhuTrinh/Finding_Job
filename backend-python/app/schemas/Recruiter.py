@@ -7,7 +7,6 @@ class Address(BaseModel):
 
 class Company(BaseModel):
     id: int
-    name: str
     address: Address
 
 class UserRegister(BaseModel):

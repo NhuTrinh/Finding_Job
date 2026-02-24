@@ -15,7 +15,8 @@ function Companies() {
     try {
       const res = await api.get("/companies");
       console.log("Companies API:", res.data);
-      setCompanies(res.data.data || []);
+      const list = Array.isArray(res.data) ? res.data : (res.data.data ?? res.data.companies);
+      setCompanies(list || []);
     } catch (err) {
       console.error("Error fetching companies:", err);
     } finally {
@@ -24,16 +25,17 @@ function Companies() {
   };
 
   const handleSearchCompanies = async (query, type) => {
-  try {
-    let url = "/companies";
-    if (type === "Công Ty") url = `/companies?search=${query}`;
-    if (type === "Vị Trí") url = `/companies?location=${query}`;
-    const res = await api.get(url);
-    setCompanies(res.data.data || []);
-  } catch (err) {
-    console.error("Error searching companies:", err);
-  }
-};
+    try {
+      let url = "/companies";
+      if (type === "Công Ty") url = `/companies?search=${query}`;
+      if (type === "Vị Trí") url = `/companies?location=${query}`;
+      const res = await api.get(url);
+      const list = Array.isArray(res.data) ? res.data : (res.data.data ?? res.data.companies);
+      setCompanies(list || []);
+    } catch (err) {
+      console.error("Error searching companies:", err);
+    }
+  };
 
 
   if (loading) return <p className="text-center mt-4">Đang tải...</p>;

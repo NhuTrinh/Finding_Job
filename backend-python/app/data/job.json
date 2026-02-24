@@ -62,5 +62,71 @@
         "description": "We are looking for a ReactJS developer to join our team. You will work on exciting frontend projects and collaborate with a talented team.",
         "createdAt": "2026-02-20T18:30:18.930761Z",
         "updatedAt": "2026-02-20T18:30:18.930761Z"
+    },
+    {
+        "_id": "96b7395b-2fd4-4094-a62c-899409c4c92b",
+        "title": "BUSINESS ANALYST (BA)",
+        "jobTitle": "Senior BA",
+        "recruiterId": "7d0f4e78-7496-4a01-bb92-df93c20a1117",
+        "companyId": 2,
+        "salaryMin": 3000,
+        "salaryMax": 5000,
+        "address": {
+            "line": "448 Trần Hưng Đạo",
+            "city": "TP. Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "employmentType": "Full-time",
+        "skills": [
+            "Kỹ năng phân tích",
+            "tư duy logic tốt",
+            "giao tiếp và trình bày rõ ràng"
+        ],
+        "jobExpertise": [
+            "Database (SQL)",
+            "API / hệ thống web"
+        ],
+        "jobDomain": [
+            "Bảo hiểm nhân thọ"
+        ],
+        "description": "Chúng tôi đang tìm Business Analyst (BA) có khả năng thu thập và phân tích yêu cầu nghiệp vụ, phối hợp với các bên liên quan và đội phát triển để xây dựng giải pháp hiệu quả, đúng mục tiêu kinh doanh.",
+        "createdAt": "2026-02-24T16:14:42.627672Z",
+        "updatedAt": "2026-02-24T16:14:42.627672Z"
+    },
+    {
+        "_id": "687cafc5-7e62-450e-a0fe-d35c01a47626",
+        "title": "QA Engineer",
+        "jobTitle": "QA senior",
+        "recruiterId": "7d0f4e78-7496-4a01-bb92-df93c20a1117",
+        "companyId": 2,
+        "salaryMin": 3000,
+        "salaryMax": 5000,
+        "address": {
+            "line": "448 Trần Hưng Đạo",
+            "city": "TP. Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "employmentType": "Full-time",
+        "skills": [
+            "Có kiến thức cơ bản về kiểm thử phần mềm",
+            "Biết viết test case",
+            "hiểu quy trình SDLC/STLC",
+            "Cẩn thận",
+            "logic tốt",
+            "có trách nhiệm",
+            "Cẩn thận",
+            "logic tốt",
+            "có trách nhiệm"
+        ],
+        "jobExpertise": [
+            "Tester Manual",
+            "Tester Manual"
+        ],
+        "jobDomain": [
+            "Bảo hiểm nhân thọ"
+        ],
+        "description": "Thực hiện test phần mềm (manual/automation) để đảm bảo chất lượng sản phẩm, Phân tích yêu cầu, viết test case, test plan, Phát hiện, báo cáo và theo dõi lỗi trong quá trình phát triển, Phối hợp với BA và Developer để xử lý issue, Tham gia cải tiến quy trình kiểm thử",
+        "createdAt": "2026-02-24T16:52:32.328879Z",
+        "updatedAt": "2026-02-24T16:52:32.328879Z"
     }
 ]

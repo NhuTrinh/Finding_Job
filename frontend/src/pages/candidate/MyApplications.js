@@ -23,7 +23,11 @@ export default function MyApplications() {
             const map = {};
             jobResults.forEach((r) => {
                 if (r.status === "fulfilled") {
-                    map[r.value.data?._id] = r.value.data;
+                    const raw = r.value.data;
+                    const job = raw?.data ?? raw;
+                    if (job?._id) {
+                        map[job._id] = job;
+                    }
                 }
             });
             setJobsById(map);
@@ -105,7 +109,7 @@ export default function MyApplications() {
                                         <td>{job?.title || a.jobId}</td>
                                         <td>{job?.address?.city || "-"}</td>
                                         <td>{statusLabel(a.status)}</td>
-                                        <td>{a.createdAt ? new Date(a.createdAt).toLocaleString() : "-"}</td>
+                                        <td>{a.createdAt ? new Date(a.createdAt).toLocaleString("vi-VN") : "-"}</td>
                                         <td>
                                             <button
                                                 className="btn btn-danger btn-sm"

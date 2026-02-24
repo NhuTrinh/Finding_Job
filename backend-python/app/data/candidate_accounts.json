@@ -39,12 +39,51 @@
         "id": "69973ba827338819eb9e630c",
         "fullName": "Ứng Viên G",
         "email": "ungvieng@example.com",
-        "role": "candidate"
+        "password": "$2b$12$JkL8NP657fOD.UgvSlYSauAPPaKbh/.TvZ3AZKUeLSSOYj7/tivRe",
+        "role": "candidate",
+        "createdAt": "2026-02-24T13:00:00.000000Z",
+        "updatedAt": "2026-02-24T13:00:00.000000Z"
     },
     {
         "id": "69973ba827338819eb9e630d",
         "fullName": "Ứng Viên H",
         "email": "ungvienh@example.com",
         "role": "candidate"
+    },
+    {
+        "id": "7f33bf72-a253-4143-9d6f-2652672cc280",
+        "fullName": "NhuTrinh",
+        "email": "testcandidate2@gmail.com",
+        "password": "$2b$12$J2.VGE1CEC5fVorpV5SH.eV2dpO64ThkPeYas1l5teMDmMQCqUZfy",
+        "role": "candidate",
+        "createdAt": "2026-02-24T03:45:47.157512Z",
+        "updatedAt": "2026-02-24T03:45:47.157512Z"
+    },
+    {
+        "id": "2aa81e59-373d-479d-8901-385279359fc5",
+        "fullName": "LongNguyen",
+        "email": "candidate1@gmail.com",
+        "password": "$2b$12$uRdtAI1gxtduPU07O019X.kojcdWDx/rY3gbCFnjNevqxQnJGwfzy",
+        "role": "candidate",
+        "createdAt": "2026-02-24T12:58:09.340709Z",
+        "updatedAt": "2026-02-24T12:58:09.340709Z"
+    },
+    {
+        "id": "fc354b93-c9d7-422e-8500-abacf68c827f",
+        "fullName": "Ứng Viên 13",
+        "email": "test13@example.com",
+        "password": "$2b$12$c09KB0zxo6hHr990QiMonOv7cTFZ5AUUtxPqblAfcA8ejzGZhbC2y",
+        "role": "candidate",
+        "createdAt": "2026-02-24T18:38:19.413177Z",
+        "updatedAt": "2026-02-24T18:38:19.413177Z"
+    },
+    {
+        "id": "bfa28703-a361-4dba-bead-da0f44d91239",
+        "fullName": "Ứng Viên 14",
+        "email": "test14@example.com",
+        "password": "$2b$12$JnLNuXIQ.KyHOEE/.4N1PevrLdwrkU5tsq.WExL5ZXrZs3f7YV0du",
+        "role": "candidate",
+        "createdAt": "2026-02-24T19:51:53.555981Z",
+        "updatedAt": "2026-02-24T19:51:53.555981Z"
     }
 ]

@@ -17,6 +17,11 @@ router  = APIRouter(prefix="/api/v1/jobs", tags=["Job"])
 def list_jobs():
     return {"status": "success", "jobs": get_all_jobs()}
 
+@router.post(
+    "",
+    summary="Tạo job mới cho nhà tuyển dụng",
+    description="Tạo job mới cho nhà tuyển dụng"
+)
 def create_new_job(job: CreateJob, credentials: HTTPAuthorizationCredentials = Depends(security)):
     return create_job(job, credentials)
 
