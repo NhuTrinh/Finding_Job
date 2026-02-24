@@ -180,7 +180,7 @@ const Login = () => {
 
                 {/* Link to register */}
                 <div className="text-center mt-3">
-                    <Link to="/register" className="text-decoration-none" style={{ fontWeight: "bold" }}>
+                    <Link to="/employer/register" className="text-decoration-none" style={{ fontWeight: "bold" }}>
                         Chưa có tài khoản? Đăng ký ngay
                     </Link>
                 </div>

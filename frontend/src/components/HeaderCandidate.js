@@ -9,6 +9,7 @@ function HeaderCandidate() {
   const fullName = localStorage.getItem("fullName");
 
   const handleLogout = () => {
+    localStorage.removeItem("accessToken");
     localStorage.removeItem("token");
     localStorage.removeItem("fullName");
     navigate("/candidate/login");
@@ -61,24 +62,24 @@ function HeaderCandidate() {
               </>
             ) : (
               <>
-                  {/* <span className="me-3 text-light">Xin chào, {fullName}</span> */}
-                  <Dropdown align="end" className="mt-2 mt-lg-0">
-                        <Dropdown.Toggle
-                            as="div"
-                            style={{ cursor: 'pointer' }}
-                            className="d-flex align-items-center"
-                        >
-                            <span className="me-3 text-light">Hi, {fullName}</span>
-                        </Dropdown.Toggle>
+                {/* <span className="me-3 text-light">Xin chào, {fullName}</span> */}
+                <Dropdown align="end" className="mt-2 mt-lg-0">
+                  <Dropdown.Toggle
+                    as="div"
+                    style={{ cursor: 'pointer' }}
+                    className="d-flex align-items-center"
+                  >
+                    <span className="me-3 text-light">Hi, {fullName}</span>
+                  </Dropdown.Toggle>
 
-                        <Dropdown.Menu>
-                            <Dropdown.Item onClick={() => navigate("/candidate/profile/details")}>
-                                Hồ sơ Timviec
-                            </Dropdown.Item>
-                            <Dropdown.Item onClick={() => navigate("/candidate/applications")}>Đã ứng tuyển</Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
-                  
+                  <Dropdown.Menu>
+                    <Dropdown.Item onClick={() => navigate("/candidate/profile/details")}>
+                      Hồ sơ Timviec
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={() => navigate("/candidate/applications")}>Đã ứng tuyển</Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+
                 <button className="btn btn-light" onClick={handleLogout}>Đăng xuất</button>
               </>
             )}

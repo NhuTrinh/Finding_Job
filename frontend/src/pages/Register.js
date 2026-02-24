@@ -79,6 +79,7 @@ const Register = () => {
                 email: formData.email,
                 password: formData.password,
                 company: {
+                    id: 1,
                     name: formData.companyName,
                     address: {
                         line: formData.addressLine,
@@ -101,7 +102,7 @@ const Register = () => {
             });
             setSuccess('Đăng ký thành công! Bạn có thể đăng nhập ngay bây giờ.');
             setTimeout(() => {
-                navigate('/login');
+                navigate('/employer/login');
             }, 3000);
         } catch (err) {
             if (err.errors) {
@@ -201,7 +202,7 @@ const Register = () => {
                 </button>
 
                 <div className="text-center mt-3">
-                    <Link to="/login" className="text-decoration-none" style={{ fontWeight: 'bold' }}>
+                    <Link to="/employer/login" className="text-decoration-none" style={{ fontWeight: 'bold' }}>
                         Đã có tài khoản? Đăng nhập ngay
                     </Link>
                 </div>
