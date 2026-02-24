@@ -47,7 +47,7 @@ const CompanyProfile = ({ companyInfo, onUpdate }) => {
             address: {
                 line: form.companyLine,
                 city: form.companyCity,
-                country: form.companyCountry,
+                country: 'Việt Nam',
             },
             workingDays: form.companyWorkingTime,
             Overtime: form.companyOvertime,
@@ -98,10 +98,6 @@ const CompanyProfile = ({ companyInfo, onUpdate }) => {
 
     const countries = [
         "Việt Nam",
-        "Mỹ",
-        "Nhật Bản",
-        "Hàn Quốc",
-        "Trung Quốc"
     ];
 
     if (!companyInfo) return null;
@@ -117,7 +113,6 @@ const CompanyProfile = ({ companyInfo, onUpdate }) => {
   </h5>
   <p className="mb-2"><strong>Công ty:</strong> {companyInfo.companyName}</p>
   <p className="mb-2"><strong>Loại hình:</strong> {companyInfo.companyType}</p>
-  <p className="mb-2"><strong>Ngày thành lập:</strong> {companyInfo.foundedYear}</p>
   <p className="mb-2"><strong>Ngành nghề:</strong> {companyInfo.industry}</p>
   <p className="mb-0"><strong>Slogan:</strong> “{companyInfo.slogan}”</p>
 </div>
@@ -183,8 +178,8 @@ const CompanyProfile = ({ companyInfo, onUpdate }) => {
 
         <Row>
           <Col md={6}>
-            <Form.Label>Ngày thành lập:</Form.Label>
-            <Form.Control name="foundedYear" value={form.foundedYear} onChange={handleChange} />
+            <Form.Label>Lĩnh vực:</Form.Label>
+                    <Form.Control name="foundedYear" value='Bảo hiểm' onChange={handleChange} />
           </Col>
           <Col md={6}>
             <Form.Label>Ngành nghề:</Form.Label>

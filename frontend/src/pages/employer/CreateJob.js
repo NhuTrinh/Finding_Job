@@ -2,10 +2,21 @@ import React, { useState, useContext } from "react";
 import JobService from "../../services/JobService";
 import { AuthContext } from "../../contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { Modal, Button } from "react-bootstrap";
 
 const CreateJob = () => {
     const { user } = useContext(AuthContext);
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
+    const [showErrorModal, setShowErrorModal] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
+
+    const cities = [
+        "Hà Nội",
+        "TP. Hồ Chí Minh",
+        "Đà Nẵng",
+        "Cần Thơ",
+    ];
 
     const [formData, setFormData] = useState({
         title: "",
@@ -16,7 +27,7 @@ const CreateJob = () => {
         address: {
             line: "",
             city: "",
-            country: ""
+            country: "Việt Nam",
         },
         skills: "",
         jobExpertise: "",
@@ -52,11 +63,11 @@ const CreateJob = () => {
 
         try {
             await JobService.createJob(payload, user.accessToken);
-            alert("✅ Tạo job thành công!");
-            navigate("/employer/dashboard");
+            setShowSuccessModal(true);
         } catch (err) {
             console.error("❌ Lỗi khi tạo job:", err);
-            alert("Tạo job thất bại");
+            setErrorMessage("Tạo tin tuyển dụng thất bại. Vui lòng thử lại!");
+            setShowErrorModal(true);
         }
     };
 
@@ -90,7 +101,12 @@ const CreateJob = () => {
                     </div>
                     <div className="col-md-4">
                         <label className="form-label">Thành phố</label>
-                        <input type="text" className="form-control" name="address.city" value={formData.address.city} onChange={handleChange} />
+                        <select className="form-select" name="address.city" value={formData.address.city} onChange={handleChange}>
+                            <option value="">Chọn thành phố</option>
+                            {cities.map((city) => (
+                                <option key={city} value={city}>{city}</option>
+                            ))}
+                        </select>
                     </div>
                     <div className="col-md-4">
                         <label className="form-label">Quốc gia</label>
@@ -140,6 +156,55 @@ const CreateJob = () => {
                     />
                 </div>
 
+                <Modal
+                    show={showSuccessModal}
+                    onHide={() => setShowSuccessModal(false)}
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-success fw-bold">
+                            Tạo job thành công
+                        </Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        Tin tuyển dụng đã được tạo thành công.
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button
+                            variant="success"
+                            onClick={() => navigate("/employer/dashboard")}
+                        >
+                            OK
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
+
+                <Modal
+                    show={showErrorModal}
+                    onHide={() => setShowErrorModal(false)}
+                    centered
+                >
+                    <Modal.Header closeButton>
+                        <Modal.Title className="text-danger fw-bold">
+                            Tạo job thất bại
+                        </Modal.Title>
+                    </Modal.Header>
+
+                    <Modal.Body>
+                        {errorMessage}
+                    </Modal.Body>
+
+                    <Modal.Footer>
+                        <Button
+                            variant="secondary"
+                            onClick={() => setShowErrorModal(false)}
+                        >
+                            Đóng
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
                 <button type="submit" className="btn btn-primary">Đăng tin</button>
             </form>
         </div>

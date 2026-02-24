@@ -18,8 +18,8 @@ const Job = () => {
     const { user } = useContext(AuthContext);
     const [jobs, setJobs] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
- const [showDeleteModal, setShowDeleteModal] = useState(false);
-const [showActionModal, setShowActionModal] = useState(false);
+    const [showConfirmModal, setShowConfirmModal] = useState(false);
+    const [showConfirmDeleteModal, setShowConfirmDeleteModal] = useState(false);
     const [jobToDelete, setJobToDelete] = useState(null);
     const [applications, setApplications] = useState([]);
     const [selectedJobId, setSelectedJobId] = useState(null);
@@ -66,7 +66,7 @@ const [showActionModal, setShowActionModal] = useState(false);
 
     const confirmDelete = (jobId) => {
         setJobToDelete(jobId);
-        setShowDeleteModal(true);
+        setShowConfirmDeleteModal(true);
     };
 
     const handleDelete = async (jobId) => {
@@ -76,7 +76,7 @@ const [showActionModal, setShowActionModal] = useState(false);
         } catch (err) {
             console.error("Lỗi khi xóa job:", err);
         } finally {
-            setShowDeleteModal(false);
+            setShowConfirmModal(false);
             setJobToDelete(null);
         }
     };
@@ -84,7 +84,7 @@ const [showActionModal, setShowActionModal] = useState(false);
     const confirmAction = (id, type) => {
         setSelectedAppId(id);
         setActionType(type); // "accept" hoặc "deny"
-        setShowActionModal(true);
+        setShowConfirmModal(true);
     };
 
     const handleConfirmedAction = async () => {
@@ -107,12 +107,12 @@ const [showActionModal, setShowActionModal] = useState(false);
         } catch (error) {
             console.error("Lỗi khi xử lý yêu cầu:", error);
         } finally {
-            setShowActionModal(false);
+            setShowConfirmModal(false);
             setSelectedAppId(null);
             setActionType("");
         }
     };
-    
+
 
     return (
         <div className="p-4">
@@ -222,7 +222,7 @@ const [showActionModal, setShowActionModal] = useState(false);
             ) : (
                 <p>Chưa có việc nào</p>
             )}
-            <Modal show={showDeleteModal} onHide={() => setShowDeleteModal(false)} centered>
+            <Modal show={showConfirmDeleteModal} onHide={() => setShowConfirmDeleteModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title>Xác nhận xóa</Modal.Title>
                 </Modal.Header>
@@ -230,11 +230,14 @@ const [showActionModal, setShowActionModal] = useState(false);
                     Bạn có chắc chắn muốn xóa công việc này không?
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowDeleteModal(false)}>Hủy</Button>
-                    <Button variant="danger" onClick={handleDelete}>Xóa</Button>
+                    <Button variant="secondary" onClick={() => setShowConfirmDeleteModal(false)}>Hủy</Button>
+                    <Button variant="danger" onClick={async () => {
+                        await handleDelete();
+                        setShowConfirmDeleteModal(false);
+                    }}>Xóa</Button>
                 </Modal.Footer>
             </Modal>
-            <Modal show={showActionModal} onHide={() => setShowActionModal(false)} centered>
+            <Modal show={showConfirmModal} onHide={() => setShowConfirmModal(false)} centered>
                 <Modal.Header closeButton>
                     <Modal.Title className="text-success">Xác nhận</Modal.Title>
                 </Modal.Header>
@@ -250,7 +253,7 @@ const [showActionModal, setShowActionModal] = useState(false);
                     )}
                 </Modal.Body>
                 <Modal.Footer>
-                    <Button variant="secondary" onClick={() => setShowActionModal(false)}>Hủy</Button>
+                    <Button variant="secondary" onClick={() => setShowConfirmModal(false)}>Hủy</Button>
                     <Button variant={actionType === "accept" ? "success" : "danger"} onClick={handleConfirmedAction}>
                         Xác nhận
                     </Button>
@@ -292,7 +295,7 @@ const [showActionModal, setShowActionModal] = useState(false);
                                                         {console.log("Candidate ID:", app.candidateId)}
                                                         <div style={{ display: 'flex', justifyContent: 'center', gap: '10px' }}>
                                                             <Link
-                                                                to={`/candidate/${app.candidateId.accountId._id}`}
+                                                                to={`/candidate/${app.candidateId._id}`}
                                                                 onClick={() => localStorage.setItem("candidateData", JSON.stringify(app.candidateId))}
                                                                 state={{ candidate: app.candidateId }}
                                                                 target="_blank"

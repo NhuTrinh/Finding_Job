@@ -104,7 +104,7 @@ const Login = () => {
                     <label className="form-label" style={{ color: "black" }}>
                         Vai trò <span style={{ color: "red" }}>*</span>
                     </label>
-                    <div className="form-check form-check-inline">
+                    {/* <div className="form-check form-check-inline">
                         <input
                             type="radio"
                             className="form-check-input"
@@ -115,7 +115,7 @@ const Login = () => {
                             id="candidate"
                         />
                         <label className="form-check-label" htmlFor="candidate">Ứng viên</label>
-                    </div>
+                    </div> */}
                     <div className="form-check form-check-inline">
                         <input
                             type="radio"

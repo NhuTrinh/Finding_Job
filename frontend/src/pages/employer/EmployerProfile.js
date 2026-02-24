@@ -33,7 +33,6 @@ const EmployerProfile = () => {
         RecruiterService.getProfile(user.accessToken)
             .then((response) => {
                 const raw = response.data;
-                console.log("✅ API response for RecruiterService.getProfile:", raw);
                 const recruiterData = {
                     fullName: raw.fullName,
                     email: raw.email,

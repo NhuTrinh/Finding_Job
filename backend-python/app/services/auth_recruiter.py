@@ -4,29 +4,47 @@ from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from app.utils.json_helper import load_json_file, save_json_file
 from app.utils.security import hash_password, verify_password, create_access_token, decode_token
 from pathlib import Path
-from app.schemas.Recruiter import UserProfile
+from app.schemas.Recruiter import UserRegister
 from datetime import datetime
 from app.schemas.Recruiter import RecruiterProfileResponse, RecruiterInfo
 
 BASE_DIR = Path(__file__).resolve().parents[1]
 DATA_FILE = BASE_DIR / "data" / "auth_register.json"
+COMPANY_FILE = BASE_DIR / "data" / "company_profile.json"
 security = HTTPBearer()
 
-def register_recruiter(recruiter_data):
+def register_recruiter(recruiter_data: UserRegister):
     recruiters = load_json_file(DATA_FILE)
-    
+    companies = load_json_file(COMPANY_FILE)
+
     for r in recruiters:
         if r['email'] == recruiter_data.email:
             return {'status': 'error', 'message': 'Recruiter already registered.'}
 
+    company_name = None
+    print(f"Looking for company with ID: {recruiter_data.company.id}")
+    for c in companies:
+        if c['id'] == recruiter_data.company.id:
+            company_name = c['name']
+            break
+
+    if not company_name:
+        return {'status': 'error', 'message': 'Company not found'}
+
     new_user = recruiter_data.model_dump()
+
+    new_user['company'] = {
+        'id': recruiter_data.company.id,
+        'name': company_name,
+        'address': recruiter_data.company.address.model_dump()
+    }
+
     new_user['id'] = str(uuid.uuid4())
-    print("New user data:", new_user)
-    print("Password before hashing:", new_user["password"])
-    new_user["password"] = hash_password(new_user["password"])
-    
+    new_user['password'] = hash_password(new_user['password'])
+
     recruiters.append(new_user)
     save_json_file(DATA_FILE, recruiters)
+
     return {'status': 'success', 'message': 'Recruiter registered successfully.'}
 
 
