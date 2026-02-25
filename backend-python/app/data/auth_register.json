@@ -87,5 +87,20 @@
             }
         },
         "id": "7d0f4e78-7496-4a01-bb92-df93c20a1117"
+    },
+    {
+        "fullName": "Recruiter20",
+        "email": "recruiter20@example.com",
+        "password": "$2b$12$9WPxWYt6Nkdpf9Lc.7BW2.50D8SbwgOn4WtoN6aba0Co0ytPWmOZW",
+        "company": {
+            "id": 2,
+            "name": "Công ty Phần mềm Sao Bắc",
+            "address": {
+                "line": "448 Trần Hưng Đạo",
+                "city": "TP. Hồ Chí Minh",
+                "country": "Việt Nam"
+            }
+        },
+        "id": "702bee1b-b33c-449a-8f95-d763235ce5c7"
     }
 ]

@@ -126,5 +126,29 @@
         "status": "pending",
         "createdAt": "2026-02-24T19:53:07.976540Z",
         "updatedAt": "2026-02-24T19:53:07.976540Z"
+    },
+    {
+        "_id": "31106bad-caf8-4a31-9aae-0d2f4994cee8",
+        "candidateId": "49b46564-4e0a-4e14-9906-eb216567646b",
+        "jobId": "687cafc5-7e62-450e-a0fe-d35c01a47626",
+        "status": "pending",
+        "createdAt": "2026-02-25T05:36:24.678337Z",
+        "updatedAt": "2026-02-25T05:36:24.678337Z"
+    },
+    {
+        "_id": "6d982fac-c9e6-4a28-a91c-96b14a255523",
+        "candidateId": "c3cf72d9-5fdf-4a7c-924e-44a52f33e038",
+        "jobId": "96b7395b-2fd4-4094-a62c-899409c4c92b",
+        "status": "accept",
+        "createdAt": "2026-02-25T08:35:32.163917Z",
+        "updatedAt": "2026-02-25T08:35:32.163917Z"
+    },
+    {
+        "_id": "679de637-e993-401e-8054-cc0032949864",
+        "candidateId": "e49b2bc3-a97a-442a-b860-c367f26f4532",
+        "jobId": "a82af5da-3263-4329-bd0b-f0dbf034a748",
+        "status": "reject",
+        "createdAt": "2026-02-25T11:12:07.727462Z",
+        "updatedAt": "2026-02-25T11:12:07.727462Z"
     }
 ]

@@ -4,6 +4,7 @@ from app.routers import applications
 from app.routers import recruiter
 from app.routers import company
 from app.routers import job
+from app.routers import candidate_profile
 from fastapi.middleware.cors import CORSMiddleware
 from app.routers import auth_candidate, candidate, candidate_applications
 
@@ -30,6 +31,7 @@ app.include_router(job.router)
 app.include_router(auth_candidate.router)
 app.include_router(candidate.router)
 app.include_router(candidate_applications.router)
+app.include_router(candidate_profile.router)
 
 @app.get("/health")
 def health_check():

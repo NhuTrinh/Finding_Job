@@ -128,5 +128,34 @@
         "description": "Thực hiện test phần mềm (manual/automation) để đảm bảo chất lượng sản phẩm, Phân tích yêu cầu, viết test case, test plan, Phát hiện, báo cáo và theo dõi lỗi trong quá trình phát triển, Phối hợp với BA và Developer để xử lý issue, Tham gia cải tiến quy trình kiểm thử",
         "createdAt": "2026-02-24T16:52:32.328879Z",
         "updatedAt": "2026-02-24T16:52:32.328879Z"
+    },
+    {
+        "_id": "a82af5da-3263-4329-bd0b-f0dbf034a748",
+        "title": "QA Game",
+        "jobTitle": "Senior BA",
+        "recruiterId": "702bee1b-b33c-449a-8f95-d763235ce5c7",
+        "companyId": 2,
+        "salaryMin": 3000,
+        "salaryMax": 5000,
+        "address": {
+            "line": "448 Trần Hưng Đạo",
+            "city": "TP. Hồ Chí Minh",
+            "country": "Việt Nam"
+        },
+        "employmentType": "Full-time",
+        "skills": [
+            "database",
+            "API",
+            "automation"
+        ],
+        "jobExpertise": [
+            "Đảm bảo chất lượng"
+        ],
+        "jobDomain": [
+            "Bảo hiểm"
+        ],
+        "description": "testing",
+        "createdAt": "2026-02-25T11:11:33.147224Z",
+        "updatedAt": "2026-02-25T11:11:33.147224Z"
     }
 ]
